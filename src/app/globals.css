@@ -170,13 +170,15 @@ a {
   background-clip: text;
 }
 
-/* Space Background - Full responsive */
+/* Space Background - Full responsive with subtle blur */
 .bg-space {
   background-color: var(--color-space-950);
   background-image: url('/images/space-bg.jpg');
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
+  filter: blur(1.2px) contrast(1.05);
+  transform: scale(1.01); 
 }
 
 /* Mobile Portrait - Full height coverage */
