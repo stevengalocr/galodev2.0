@@ -10,7 +10,13 @@
   },
   "home": {
     "title": "Welcome",
-    "subtitle": "Custom software development"
+    "subtitle": "Custom software development",
+    "hero": {
+      "greeting": "Hi, I'm",
+      "name": "GaloDev",
+      "role": "Full-Stack Software Engineer",
+      "description": "Systems Engineer focused on modern software development and functional digital solutions. Experienced in creating web applications, custom systems, and scalable products with a focus on quality, design, and performance."
+    }
   },
   "auth": {
     "login": "Login",

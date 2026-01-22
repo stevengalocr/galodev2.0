@@ -18,8 +18,8 @@ export function Header() {
       <nav 
         className="flex items-center justify-between w-[80%] transition-all duration-300"
         style={{
-          borderRadius: '1rem',
-          padding: '0.5rem 2rem 0.5rem', 
+          borderRadius: '1.5rem',
+          padding: '0.5rem 1rem 0.5rem', 
           background: 'rgba(10, 10, 20, 0.2)', // Fondo oscuro translúcido para integración con el espacio
           backdropFilter: 'blur(16px)',        // Desenfoque para efecto cristal
           WebkitBackdropFilter: 'blur(16px)',
@@ -51,7 +51,7 @@ export function Header() {
             href="/contact"
             className="px-8 py-3 text-sm font-bold transition-all duration-300 shadow-lg hover:shadow-primary-500/30"
             style={{
-              borderRadius: '1rem',
+              borderRadius: '1.5rem',
               padding: '0.5rem 1rem 0.5rem',
               background: 'var(--color-primary-900)', 
               color: 'white',
@@ -82,13 +82,14 @@ function NavLink({
     <Link
       href={href}
       className={`
-        text-base transition-all duration-300 rounded-full
+        text-base transition-all duration-300
         ${active 
           ? 'bg-primary-500/20 text-white font-medium shadow-sm' 
           : 'text-white/60 font-light hover:text-white hover:bg-white/5' 
         }
       `}
       style={{
+        borderRadius: '1.5rem',
         padding: '0.5rem 1rem',
         border: active ? '0.5px solid rgba(255, 255, 255, 0.1)' : '0.5px solid transparent',
       }}

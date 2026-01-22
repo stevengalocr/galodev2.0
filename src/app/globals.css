@@ -170,15 +170,25 @@ a {
   background-clip: text;
 }
 
-/* Space Background - Full responsive with subtle blur */
+/* Space Background */
 .bg-space {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background-color: var(--color-space-950);
   background-image: url('/images/space-bg.jpg');
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
+  z-index: 0;
   filter: blur(1.2px) contrast(1.05);
   transform: scale(1.01); 
+}
+
+.bitmoji {
+    transform: scale(1); 
 }
 
 /* Mobile Portrait - Full height coverage */
@@ -195,11 +205,13 @@ a {
   }
 }
 
-/* Ensure minimum coverage on very tall screens */
-@media (max-aspect-ratio: 9/16) {
-  .bg-space {
-    background-size: auto 100vh;
-  }
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
 }
 
 

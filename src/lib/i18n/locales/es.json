@@ -10,7 +10,13 @@
   },
   "home": {
     "title": "Bienvenido",
-    "subtitle": "Desarrollo de software a medida"
+    "subtitle": "Desarrollo de software a medida",
+    "hero": {
+      "greeting": "Hola, soy",
+      "name": "GaloDev",
+      "role": "Full-Stack Software Engineer",
+      "description": "Ingeniero en sistemas enfocado en el desarrollo de software moderno y soluciones digitales funcionales. Experiencia creando aplicaciones web, sistemas a medida y productos escalables con enfoque en calidad, diseño y rendimiento."
+    }
   },
   "auth": {
     "login": "Iniciar Sesión",
