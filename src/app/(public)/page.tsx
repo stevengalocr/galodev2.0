@@ -4,6 +4,8 @@
  * Landing page with cosmic space background and smooth gradient fades.
  */
 
+import { Header } from '@/components/layout/header';
+
 export default function Home() {
   return (
     <div className="relative min-h-screen overflow-hidden">
@@ -70,7 +72,12 @@ export default function Home() {
       
       {/* Content Layer */}
       <div className="relative z-20 min-h-screen">
-        {/* Content will go here */}
+        <Header />
+        
+        {/* Main Content Area */}
+        <main className="pt-24">
+          {/* Hero content will go here */}
+        </main>
       </div>
     </div>
   );

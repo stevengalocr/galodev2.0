@@ -88,7 +88,7 @@
   --button-secondary: var(--color-secondary-500);
   --button-secondary-hover: var(--color-secondary-600);
 
-  --font-sans: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
+  --font-sans: var(--font-outfit), system-ui, -apple-system, sans-serif;
   --font-mono: var(--font-geist-mono), monospace;
 
   --radius-sm: 0.25rem;

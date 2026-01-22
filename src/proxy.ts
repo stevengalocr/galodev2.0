@@ -1,35 +1,19 @@
 /**
  * Root Proxy
  *
- * Handles session refresh and route protection.
- * Runs on every request to keep auth state synchronized.
+ * Modified for Design Mode:
+ * - Allows access to ALL routes without login.
+ * - Session refresh is kept active but doesn't block access.
  */
 
 import { type NextRequest, NextResponse } from 'next/server';
-import { updateSession, matchesPath, PUBLIC_ROUTES, AUTH_ROUTES } from '@/lib/supabase/middleware';
+import { updateSession } from '@/lib/supabase/middleware';
 
 export async function proxy(request: NextRequest) {
-  const { pathname } = request.nextUrl;
+  // Update session (refresh token if needed) - keeping this so auth state still works if needed
+  const { supabaseResponse } = await updateSession(request);
 
-  // Update session (refresh token if needed)
-  const { user, supabaseResponse } = await updateSession(request);
-
-  // Allow public routes
-  if (matchesPath(pathname, PUBLIC_ROUTES)) {
-    // Redirect authenticated users away from auth pages
-    if (user && matchesPath(pathname, AUTH_ROUTES)) {
-      return NextResponse.redirect(new URL('/dashboard', request.url));
-    }
-    return supabaseResponse;
-  }
-
-  // Protect private routes - redirect to login if not authenticated
-  if (!user) {
-    const redirectUrl = new URL('/login', request.url);
-    redirectUrl.searchParams.set('redirectTo', pathname);
-    return NextResponse.redirect(redirectUrl);
-  }
-
+  // DESIGN MODE: Always allow access
   return supabaseResponse;
 }
 

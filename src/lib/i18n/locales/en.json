@@ -1,0 +1,33 @@
+{
+  "common": {
+    "brand": "GaloDev",
+    "language": "English"
+  },
+  "nav": {
+    "home": "Home",
+    "projects": "Projects",
+    "contact": "Contact Us"
+  },
+  "home": {
+    "title": "Welcome",
+    "subtitle": "Custom software development"
+  },
+  "auth": {
+    "login": "Login",
+    "register": "Register",
+    "logout": "Logout",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm password",
+    "fullName": "Full name",
+    "loading": "Loading...",
+    "noAccount": "Don't have an account?",
+    "hasAccount": "Already have an account?"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "userInfo": "User Information",
+    "userId": "User ID",
+    "lastSignIn": "Last Sign In"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "common": {
+    "brand": "GaloDev",
+    "language": "Español"
+  },
+  "nav": {
+    "home": "Inicio",
+    "projects": "Proyectos",
+    "contact": "Contáctanos"
+  },
+  "home": {
+    "title": "Bienvenido",
+    "subtitle": "Desarrollo de software a medida"
+  },
+  "auth": {
+    "login": "Iniciar Sesión",
+    "register": "Registrarse",
+    "logout": "Cerrar Sesión",
+    "email": "Correo electrónico",
+    "password": "Contraseña",
+    "confirmPassword": "Confirmar contraseña",
+    "fullName": "Nombre completo",
+    "loading": "Cargando...",
+    "noAccount": "¿No tienes cuenta?",
+    "hasAccount": "¿Ya tienes cuenta?"
+  },
+  "dashboard": {
+    "title": "Panel",
+    "userInfo": "Información del usuario",
+    "userId": "ID de usuario",
+    "lastSignIn": "Último inicio de sesión"
+  }
+}
