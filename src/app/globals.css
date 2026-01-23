@@ -170,41 +170,79 @@ a {
   background-clip: text;
 }
 
-/* Space Background */
+/* Space Background - Fixed fullscreen with subtle enhancements */
 .bg-space {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   background-color: var(--color-space-950);
   background-image: url('/images/space-bg.jpg');
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
   z-index: 0;
-  filter: blur(1.2px) contrast(1.05);
-  transform: scale(1.01); 
+  filter: blur(1px) contrast(1.05);
+  transform: scale(1.02);
 }
 
-.bitmoji {
-    transform: scale(1); 
-}
-
-/* Mobile Portrait - Full height coverage */
+/* Responsive background sizing */
 @media (max-aspect-ratio: 1/1) {
   .bg-space {
     background-size: auto 100%;
   }
 }
 
-/* Tablet and Desktop Landscape - Full width */
 @media (min-aspect-ratio: 1/1) {
   .bg-space {
     background-size: 100% auto;
   }
 }
 
+/* Edge Fade Overlays - Creates seamless continuation effect */
+.fade-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 15vh;
+  background: linear-gradient(to bottom, var(--color-space-950), transparent);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.fade-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 20vh;
+  background: linear-gradient(to top, var(--color-space-950), transparent);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.fade-left {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 8vw;
+  background: linear-gradient(to right, var(--color-space-950), transparent);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.fade-right {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 8vw;
+  background: linear-gradient(to left, var(--color-space-950), transparent);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Floating Animation */
 @keyframes float {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-20px); }
@@ -213,6 +251,3 @@ a {
 .animate-float {
   animation: float 6s ease-in-out infinite;
 }
-
-
-
