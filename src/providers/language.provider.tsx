@@ -37,6 +37,15 @@ export function LanguageProvider({ children, initialLocale }: LanguageProviderPr
     if (savedLocale && locales.includes(savedLocale)) {
       setLocaleState(savedLocale);
       setT(getTranslations(savedLocale));
+    } else {
+      const browserLang = navigator.language?.toLowerCase() || '';
+      if (browserLang.startsWith('en')) {
+        setLocaleState('en');
+        setT(getTranslations('en'));
+      } else {
+        setLocaleState('es');
+        setT(getTranslations('es'));
+      }
     }
   }, []);
 

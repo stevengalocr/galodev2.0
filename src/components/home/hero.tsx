@@ -70,26 +70,26 @@ const icons = [
   // Higher negative Y values to push further up into empty space
   
   // Tier 1: The Apex (Mobile: Higher spread | Desktop: Lowered)
-  { Icon: SiNextdotjs, color: '#ffffff', delay: 0.6, x: 0, y: -70, mobileY: -105 },
-  { Icon: FaReact, color: '#61DAFB', delay: 0.1, x: -12, y: -100, mobileY: -150 },
-  { Icon: SiTypescript, color: '#3178C6', delay: 0.2, x: 12, y: -100, mobileY: -150 },
+  { Icon: SiPostgresql, color: '#336791', delay: 0.6, x: 0, y: -70, mobileY: -105 },
+  { Icon: FaAngular, color: '#DD0031', delay: 0.1, x: -12, y: -100, mobileY: -150 },
+  { Icon: TbBrandCSharp, color: '#AA00FF', delay: 0.2, x: 12, y: -100, mobileY: -150 },
 
   // Tier 2: Upper Mid
   { Icon: FaHtml5, color: '#E34F26', delay: 0.4, x: -28, y: -80, mobileY: -120 },
   { Icon: FaCss3Alt, color: '#1572B6', delay: 0.7, x: -20, y: -45, mobileY: -80 },
-  { Icon: TbBrandCSharp, color: '#AA00FF', delay: 0, x: 0, y: -110, mobileY: -170 },
+  { Icon: SiTypescript, color: '#3178C6', delay: 0, x: 0, y: -110, mobileY: -170 },
 
   // Tier 3: Lower Mid
   { Icon: SiDotnet, color: '#512BD4', delay: 0.5, x: 28, y: -80, mobileY: -120 },
-  { Icon: FaAngular, color: '#DD0031', delay: 0.8, x: 20, y: -45, mobileY: -80 },
-  { Icon: FaDocker, color: '#2496ED', delay: 1.0, x: -38, y: -40, mobileY: -85 },
+  { Icon: FaDocker, color: '#2496ED', delay: 0.8, x: 20, y: -45, mobileY: -80 },
+  { Icon: FaReact, color: '#61DAFB', delay: 1.0, x: -38, y: -40, mobileY: -85 },
   { Icon: SiGo, color: '#00ADD8', delay: 1.2, x: 38, y: -40, mobileY: -85 },
 
   // Tier 4: Base
-  { Icon: SiPostgresql, color: '#336791', delay: 1.4, x: -12, y: 10, mobileY: -40 },
+  { Icon: SiNextdotjs, color: '#d4d4d4ff', delay: 1.4, x: -12, y: 10, mobileY: -40 },
   { Icon: DiMsqlServer, color: '#CC2927', delay: 1.5, x: 12, y: 10, mobileY: -40 },
-  { Icon: SiPostman, color: '#FF6C37', delay: 1.6, x: -30, y: -10, mobileY: -45 },
-  { Icon: FaGitAlt, color: '#F05032', delay: 1.8, x: 30, y: -10, mobileY: -45 },
+  { Icon: FaGitAlt, color: '#F05032', delay: 1.6, x: -30, y: -10, mobileY: -45 },
+  { Icon: SiPostman, color: '#FF6C37', delay: 1.8, x: 30, y: -10, mobileY: -45 },
 ];
 
 function TechFloatingIcons() {
