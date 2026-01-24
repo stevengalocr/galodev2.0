@@ -14,6 +14,9 @@ const outfit = Outfit({
 export const metadata: Metadata = {
   title: 'GaloDev',
   description: 'Desarrollo de software a medida | Custom software development',
+  icons: {
+    icon: '/images/hero-bitmoji.png',
+  },
 };
 
 export default function RootLayout({
