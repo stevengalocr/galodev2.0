@@ -113,12 +113,14 @@ function TechFloatingIcons() {
 function FloatingIcon({ Icon, color, delay, x, y, mobileY }: { Icon: any, color: string, delay: number, x: number, y: number, mobileY: number }) {
   return (
     <motion.div
-      className="absolute flex items-center justify-center w-10 h-10 sm:w-10 sm:h-10 md:w-[66px] md:h-[66px] lg:w-16 lg:h-16 bg-[#0a0f1c]/80 backdrop-blur-md border border-white/10 rounded-2xl shadow-[0_0_20px_rgba(59,130,246,0.15)] ring-1 ring-white/5 top-[var(--mobile-top)] lg:top-[var(--desktop-top)]"
+      className="absolute flex items-center justify-center w-10 h-10 sm:w-10 sm:h-10 md:w-[66px] md:h-[66px] lg:w-16 lg:h-16 backdrop-blur-[16px] rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.2)] top-[var(--mobile-top)] lg:top-[var(--desktop-top)]"
       style={{
         left: `${50 + x}%`,
         '--mobile-top': `${45 + mobileY}%`,
         '--desktop-top': `${45 + y}%`,
         transform: 'translate(-50%, -50%)',
+        background: 'linear-gradient(rgba(10, 10, 20, 0.2), rgba(10, 10, 20, 0.2)) padding-box, linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.01) 100%) border-box',
+        border: '1px solid transparent',
       } as any}
       initial={{ opacity: 0, scale: 0 }}
       animate={{ 
@@ -137,10 +139,10 @@ function FloatingIcon({ Icon, color, delay, x, y, mobileY }: { Icon: any, color:
         }
       }}
     >
-      <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/10 to-transparent opacity-40" />
+      <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/5 to-transparent opacity-40 pointer-events-none" />
       <Icon className="relative z-10 text-xl sm:text-xl md:text-4xl lg:text-4xl drop-shadow-[0_0_10px_rgba(255,255,255,0.4)]" style={{ color }} />
       <div 
-        className="absolute inset-0 rounded-2xl opacity-25 blur-lg transition-colors duration-300"
+        className="absolute inset-0 rounded-2xl opacity-25 blur-lg transition-colors duration-300 pointer-events-none"
         style={{ backgroundColor: color }}
       />
     </motion.div>
