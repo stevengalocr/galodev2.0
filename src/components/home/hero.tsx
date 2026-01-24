@@ -12,7 +12,7 @@ export function Hero() {
       style={{ marginBottom: '6.5vh' }}
     >
       {/* Bitmoji Avatar */}
-      <div className="relative w-full max-w-[680px] sm:max-w-[777px] md:max-w-[888px] lg:max-w-[999px] xl:max-w-[1111px] scale-[1.7] sm:scale-100 origin-bottom">
+      <div className="relative z-10 w-full max-w-[160px] sm:max-w-[200px] md:max-w-[240px] lg:max-w-[280px] xl:max-w-[300px] h-auto object-contain drop-shadow-2xl animate-fade-in-up origin-bottom">
         <TechFloatingIcons />
         <Image 
           src="/images/hero-bitmoji.png" 
@@ -65,31 +65,29 @@ import {
 import { TbBrandCSharp } from 'react-icons/tb';
 
 const icons = [
-  // --- The Cloud / Galaxy (Maximized Vertical Spread) ---
-  // Filling the upper "Red Zone" completely
-  // Higher negative Y values to push further up into empty space
-  
-  // Tier 1: The Apex (Mobile: Higher spread | Desktop: Lowered)
-  { Icon: SiPostgresql, color: '#336791', delay: 0.6, x: 0, y: -70, mobileY: -105 },
-  { Icon: FaAngular, color: '#DD0031', delay: 0.1, x: -12, y: -100, mobileY: -150 },
-  { Icon: TbBrandCSharp, color: '#AA00FF', delay: 0.2, x: 12, y: -100, mobileY: -150 },
+  // --- The Galaxy Spread (Optimized for Visibility) ---
+  // Adjusted to ensure no icons are lost off-screen on laptops/mobile
+  // Max Spread limited to ~200% width relative to container to fit in 1200px layout
 
-  // Tier 2: Upper Mid
-  { Icon: FaHtml5, color: '#E34F26', delay: 0.4, x: -28, y: -80, mobileY: -120 },
-  { Icon: FaCss3Alt, color: '#1572B6', delay: 0.7, x: -20, y: -45, mobileY: -80 },
-  { Icon: SiTypescript, color: '#3178C6', delay: 0, x: 0, y: -110, mobileY: -170 },
+  // Far Outer Ring (The "Galaxy" Edges - safe range)
+  { Icon: SiPostgresql, color: '#336791', delay: 0.6, x: -190, y: -100, mobileY: -90 }, // Far Left Top
+  { Icon: TbBrandCSharp, color: '#AA00FF', delay: 0.2, x: 190, y: -100, mobileY: -90 }, // Far Right Top
+  { Icon: FaGitAlt, color: '#F05032', delay: 1.6, x: -170, y: 10, mobileY: -20 },      // Far Left Bottom
+  { Icon: SiPostman, color: '#FF6C37', delay: 1.8, x: 170, y: 10, mobileY: -20 },       // Far Right Bottom
 
-  // Tier 3: Lower Mid
-  { Icon: SiDotnet, color: '#512BD4', delay: 0.5, x: 28, y: -80, mobileY: -120 },
-  { Icon: FaDocker, color: '#2496ED', delay: 0.8, x: 20, y: -45, mobileY: -80 },
-  { Icon: FaReact, color: '#61DAFB', delay: 1.0, x: -38, y: -40, mobileY: -85 },
-  { Icon: SiGo, color: '#00ADD8', delay: 1.2, x: 38, y: -40, mobileY: -85 },
+  // Mid Ring (surrounding the core)
+  { Icon: FaReact, color: '#61DAFB', delay: 1.0, x: -110, y: -140, mobileY: -130 },  // Mid Left High (Swapped from Low Left)
+  { Icon: SiDotnet, color: '#512BD4', delay: 0.5, x: 110, y: -140, mobileY: -130 },  // Mid Right High
+  { Icon: FaHtml5, color: '#E34F26', delay: 0.4, x: -100, y: -50, mobileY: -60 },    // Mid Left
+  { Icon: SiGo, color: '#00ADD8', delay: 1.2, x: 100, y: -50, mobileY: -60 },        // Mid Right
 
-  // Tier 4: Base
-  { Icon: SiNextdotjs, color: '#d4d4d4ff', delay: 1.4, x: -12, y: 10, mobileY: -40 },
-  { Icon: DiMsqlServer, color: '#CC2927', delay: 1.5, x: 12, y: 10, mobileY: -40 },
-  { Icon: FaGitAlt, color: '#F05032', delay: 1.6, x: -30, y: -10, mobileY: -45 },
-  { Icon: SiPostman, color: '#FF6C37', delay: 1.8, x: 30, y: -10, mobileY: -45 },
+  // Inner Ring (Closer to Bitmoji)
+  { Icon: SiTypescript, color: '#3178C6', delay: 0, x: 0, y: -160, mobileY: -160 },  // Top Center (High but visible)
+  { Icon: FaCss3Alt, color: '#1572B6', delay: 0.7, x: -60, y: -90, mobileY: -100 }, // Inner Left
+  { Icon: FaDocker, color: '#2496ED', delay: 0.8, x: 60, y: -90, mobileY: -100 },   // Inner Right
+  { Icon: FaAngular, color: '#DD0031', delay: 0.1, x: -45, y: -30, mobileY: -50 },  // Low Left cluster (Swapped from Mid Left High)
+  { Icon: SiNextdotjs, color: '#d4d4d4ff', delay: 1.4, x: 45, y: -30, mobileY: -50 },// Low Right cluster
+  { Icon: DiMsqlServer, color: '#CC2927', delay: 1.5, x: 0, y: -110, mobileY: -120 }, // Center Mid
 ];
 
 function TechFloatingIcons() {
