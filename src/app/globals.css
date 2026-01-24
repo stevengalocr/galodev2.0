@@ -172,8 +172,10 @@ a {
 
 /* Space Background - Fixed fullscreen with subtle enhancements */
 .bg-space {
-  position: fixed;
+  position: absolute;
   inset: 0;
+  height: 100%;
+  width: 100%;
   background-color: var(--color-space-950);
   background-image: url('/images/space-bg.jpg');
   background-size: cover;

@@ -3,7 +3,7 @@ import { Hero } from '@/components/home/hero';
 
 export default function Home() {
   return (
-    <div className="relative min-h-screen overflow-hidden">
+    <div className="relative h-screen w-full overflow-hidden">
       {/* Space Background Layer */}
       <div className="bg-space" />
       
@@ -14,7 +14,7 @@ export default function Home() {
       <div className="fade-right" />
       
       {/* Content Layer */}
-      <div className="relative z-20 min-h-screen flex flex-col">
+      <div className="relative z-20 h-screen flex flex-col">
         <Header />
         
         {/* Main Content Area - Hero positioned from bottom 8vh */}
