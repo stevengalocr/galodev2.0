@@ -6,6 +6,7 @@
   "nav": {
     "home": "Inicio",
     "projects": "Proyectos",
+    "entrepreneurs": "Para emprendedores",
     "contact": "Contáctanos"
   },
   "home": {
@@ -35,5 +36,102 @@
     "userInfo": "Información del usuario",
     "userId": "ID de usuario",
     "lastSignIn": "Último inicio de sesión"
+  },
+  "entrepreneurs": {
+    "hero": {
+      "badge": "Soluciones para Emprendedores",
+      "titlePart1": "Software que ayuda",
+      "titleHighlight": "negocios reales",
+      "description": "Creamos soluciones digitales modernas para emprendedores que quieren vender más y operar mejor."
+    },
+    "valueProp": {
+      "title": "No vendemos páginas web.",
+      "subtitle": "Creamos software que genera resultados."
+    }
+  },
+  "contact": {
+    "pageTitle": "Contáctanos",
+    "ctaTitle": "¿Tenés un negocio y querés una solución digital real?",
+    "ctaDescription": "Hablemos y construyamos la mejor herramienta para vos.",
+    "form": {
+      "namePlaceholder": "Tu nombre",
+      "emailPlaceholder": "Tu correo electrónico",
+      "messagePlaceholder": "¿En qué podemos ayudarte?",
+      "submit": "Enviar correo",
+      "submitting": "Abriendo correo...",
+      "errors": {
+        "nameRequired": "El nombre es requerido.",
+        "nameShort": "El nombre es muy corto.",
+        "emailRequired": "El correo es requerido.",
+        "emailInvalid": "Ingresa un correo válido.",
+        "messageRequired": "El mensaje es requerido.",
+        "messageShort": "El mensaje debe tener al menos 10 caracteres."
+      }
+    }
+  },
+  "products": {
+    "sectionTitle": "Creamos software que genera resultados.",
+    "swipeHint": "Desliza para explorar nuestros sistemas.",
+    "landing": {
+      "title": "Landing Pages",
+      "desc": "Páginas optimizadas para convertir visitas en clientes reales.",
+      "audience": "Servicios y Marcas Personales",
+      "short": "Páginas Web",
+      "features": {
+        "0": "Diseño orientado a conversión",
+        "1": "Captura de leads",
+        "2": "Integración con WhatsApp",
+        "3": "Carga ultra rápida"
+      }
+    },
+    "ecommerce": {
+      "title": "E-commerce a Medida",
+      "desc": "Tiendas online rápidas, escalables y personalizadas para tu marca.",
+      "audience": "Marcas y Tiendas",
+      "short": "E-commerce",
+      "features": {
+        "0": "Checkout optimizado",
+        "1": "Panel de gestión simple",
+        "2": "Integraciones de pago",
+        "3": "Preparado para crecer"
+      }
+    },
+    "chatbot": {
+      "title": "Chatbot de Ventas con IA",
+      "desc": "Automatiza respuestas, vende 24/7 y no pierdas más clientes.",
+      "audience": "Atención 24/7",
+      "short": "Chatbots",
+      "features": {
+        "0": "Atención automática",
+        "1": "Calificación de leads",
+        "2": "Respuestas inteligentes",
+        "3": "Integrable con web y WhatsApp"
+      }
+    },
+    "crm": {
+      "title": "Sistemas Completos",
+      "desc": "Controla leads, clientes y ventas desde un solo lugar.",
+      "audience": "Equipos de ventas",
+      "short": "Sistemas",
+      "features": {
+        "0": "Gestión de oportunidades",
+        "1": "Estados de venta",
+        "2": "Dashboard claro",
+        "3": "Ideal para equipos pequeños"
+      }
+    },
+    "allinone": {
+      "title": "Todo-en-Uno",
+      "desc": "La solución completa para negocios que quieren escalar.",
+      "audience": "Negocios en expansión",
+      "short": "Todo en Uno",
+      "features": {
+        "0": "Landing + ventas",
+        "1": "Automatización",
+        "2": "Chatbot",
+        "3": "Panel de control",
+        "4": "Infraestructura escalable"
+      }
+    }
   }
 }

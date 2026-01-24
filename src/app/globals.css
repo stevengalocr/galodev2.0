@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 :root {
   /* Primary - Deep Space Blues */
@@ -170,33 +170,89 @@ a {
   background-clip: text;
 }
 
-/* Space Background - Fixed fullscreen with subtle enhancements */
+/* Space Background - Procedural High-Res Midnight Blue Universe */
 .bg-space {
   position: absolute;
   inset: 0;
-  height: 100%;
-  width: 100%;
-  background-color: var(--color-space-950);
-  background-image: url('/images/space-bg.jpg');
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
+  height: 100vh;
+  width: 100vw;
   z-index: 0;
-  filter: blur(1px) contrast(1.05);
-  transform: scale(1.02);
+  background-color: #020617; /* Slate 950 - Deepest Midnight */
+  overflow: hidden;
+  /* Deep Midnight Gradient Base */
+  background-image: 
+    radial-gradient(circle at 50% 120%, #1e3a8a 10%, rgba(2, 6, 23, 0) 60%), /* Deep Royal Blue Glow from bottom */
+    linear-gradient(to bottom, #020617 0%, #0f172a 100%); /* Slate 950 to Slate 900 */
 }
 
-/* Responsive background sizing */
-@media (max-aspect-ratio: 1/1) {
-  .bg-space {
-    background-size: auto 100%;
-  }
+/* Procedural Stars & Nebulae using CSS Gradients */
+.bg-space::before,
+.bg-space::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  mix-blend-mode: screen;
 }
 
-@media (min-aspect-ratio: 1/1) {
-  .bg-space {
-    background-size: 100% auto;
-  }
+/* Layer 1: Dense Starfield & Icy Dust */
+.bg-space::before {
+  background-image: 
+    /* White/Ice Stars - Main Cluster */
+    radial-gradient(1px 1px at 10px 10px, #e2e8f0, rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 50px 80px, #e2e8f0, rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 90px 40px, #e2e8f0, rgba(0,0,0,0)),
+    radial-gradient(1.5px 1.5px at 130px 150px, #cbd5e1, rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 180px 220px, #e2e8f0, rgba(0,0,0,0)),
+    
+    /* Extra Dense Star Fill */
+    radial-gradient(1px 1px at 20px 180px, #e2e8f0, rgba(0,0,0,0)),
+    radial-gradient(0.5px 0.5px at 60px 250px, #e2e8f0, rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 110px 290px, #e2e8f0, rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 200px 80px, #e2e8f0, rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 350px 120px, #e2e8f0, rgba(0,0,0,0)),
+    radial-gradient(1.5px 1.5px at 280px 220px, #e2e8f0, rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 150px 350px, #e2e8f0, rgba(0,0,0,0)),
+
+    /* Blue Tinted Stars */
+    radial-gradient(1.5px 1.5px at 250px 50px, #38bdf8, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 300px 300px, #7dd3fc, rgba(0,0,0,0));
+  background-repeat: repeat;
+  background-size: 400px 400px;
+  opacity: 0.8;
+  animation: shine 5s ease-in-out infinite alternate;
+}
+
+/* Layer 2: Midnight Nebulae & Major Stars */
+.bg-space::after {
+  background-image: 
+    /* Large "Hero" Stars */
+    radial-gradient(2px 2px at 20px 20px, #fff, rgba(0,0,0,0)),
+    radial-gradient(3px 3px at 150px 150px, #e0f2fe, rgba(0,0,0,0)),
+    /* Midnight Blue Nebulae Clouds */
+    radial-gradient(circle at 20% 40%, rgba(30, 58, 138, 0.2), transparent 45%), /* Dark Blue */
+    radial-gradient(circle at 80% 60%, rgba(8, 145, 178, 0.15), transparent 35%),  /* Cyan */
+    radial-gradient(circle at 10% 80%, rgba(59, 130, 246, 0.1), transparent 45%); /* Blue-500 */
+  background-repeat: repeat;
+  background-size: 600px 600px;
+  animation: float-slow 15s linear infinite alternate;
+}
+
+/* Premium Twinkle Animation */
+@keyframes shine {
+  0% { opacity: 0.4; }
+  50% { opacity: 0.8; }
+  100% { opacity: 0.4; }
+}
+
+@keyframes float-slow {
+  0% { transform: translateY(0) scale(1.0); }
+  100% { transform: translateY(-5px) scale(1.02); }
 }
 
 /* Edge Fade Overlays - Creates seamless continuation effect */
@@ -246,8 +302,13 @@ a {
 
 /* Floating Animation */
 @keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-20px); }
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
 }
 
 .animate-float {

@@ -1,6 +1,6 @@
 /**
  * Main Header Component
- * 
+ *
  * Floating Glassmorphism navigation header with fullscreen mobile menu and language switcher.
  * Refined styles for active states and CTAs using corporate palette.
  */
@@ -23,21 +23,21 @@ export function Header() {
   return (
     <>
       <header className="fixed top-[5%] left-0 right-0 z-50 flex justify-center w-full px-4">
-        <nav 
+        <nav
           className="flex items-center justify-between w-full max-w-6xl transition-all duration-300"
           style={{
             borderRadius: '1.5rem',
-            padding: '0.5rem 1rem', 
+            padding: '0.5rem 1rem',
             background: 'rgba(10, 10, 20, 0.2)',
             backdropFilter: 'blur(16px)',
             WebkitBackdropFilter: 'blur(16px)',
-            border: '1px solid rgba(255, 255, 255, 0.05)', 
-            boxShadow: '0 8px 32px rgba(0, 0, 0, 0.2)', 
+            border: '1px solid rgba(255, 255, 255, 0.05)',
+            boxShadow: '0 8px 32px rgba(0, 0, 0, 0.2)',
           }}
         >
           {/* Logo */}
-          <Link 
-            href="/" 
+          <Link
+            href="/"
             className="text-white font-bold text-lg sm:text-xl tracking-tight hover:opacity-80 transition-opacity whitespace-nowrap z-50"
           >
             {t.common.brand}
@@ -48,9 +48,8 @@ export function Header() {
             <NavLink href="/" active>
               {t.nav.home}
             </NavLink>
-            <NavLink href="/projects">
-              {t.nav.projects}
-            </NavLink>
+            {/* <NavLink href="/projects">{t.nav.projects}</NavLink> */}
+            <NavLink href="/emprendedores">{t.nav.entrepreneurs}</NavLink>
           </div>
 
           {/* Hamburger Menu Button - Mobile Only */}
@@ -60,17 +59,17 @@ export function Header() {
             aria-label="Toggle menu"
           >
             <div className="w-6 h-5 flex flex-col justify-between">
-              <span 
+              <span
                 className={`block h-0.5 w-full bg-white transition-all duration-300 ${
                   mobileMenuOpen ? 'rotate-45 translate-y-2' : ''
                 }`}
               />
-              <span 
+              <span
                 className={`block h-0.5 w-full bg-white transition-all duration-300 ${
                   mobileMenuOpen ? 'opacity-0' : ''
                 }`}
               />
-              <span 
+              <span
                 className={`block h-0.5 w-full bg-white transition-all duration-300 ${
                   mobileMenuOpen ? '-rotate-45 -translate-y-2' : ''
                 }`}
@@ -100,14 +99,14 @@ export function Header() {
 
             {/* Contact CTA */}
             <Link
-              href="/contact"
+              href="/contacto"
               className="text-sm font-bold transition-all duration-300 shadow-lg hover:shadow-primary-500/30 whitespace-nowrap"
               style={{
                 borderRadius: '1.5rem',
                 padding: '0.5rem 1rem',
-                background: 'var(--color-primary-900)', 
+                background: 'var(--color-primary-900)',
                 color: 'white',
-                border: '1px solid rgba(255,255,255,0.1)'
+                border: '1px solid rgba(255,255,255,0.1)',
               }}
             >
               {t.nav.contact}
@@ -117,11 +116,9 @@ export function Header() {
       </header>
 
       {/* Fullscreen Mobile Menu Overlay */}
-      <div 
+      <div
         className={`fixed inset-0 z-[60] md:hidden transition-all duration-500 ${
-          mobileMenuOpen 
-            ? 'opacity-100 pointer-events-auto' 
-            : 'opacity-0 pointer-events-none'
+          mobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
         }`}
         style={{
           background: 'rgba(10, 10, 20, 0.3)',
@@ -135,13 +132,13 @@ export function Header() {
           className="absolute top-8 right-8 p-2 text-white/80 hover:text-white transition-colors"
           aria-label="Close menu"
         >
-          <svg 
-            className="w-8 h-8" 
-            fill="none" 
-            strokeLinecap="round" 
-            strokeLinejoin="round" 
-            strokeWidth="2" 
-            viewBox="0 0 24 24" 
+          <svg
+            className="w-8 h-8"
+            fill="none"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            viewBox="0 0 24 24"
             stroke="currentColor"
           >
             <path d="M6 18L18 6M6 6l12 12" />
@@ -150,25 +147,19 @@ export function Header() {
 
         {/* Menu Content - Centered */}
         <div className="flex flex-col items-center justify-center h-full gap-6 px-8">
-          <MobileNavLink 
-            href="/" 
-            active 
-            onClick={() => setMobileMenuOpen(false)}
-          >
+          <MobileNavLink href="/" active onClick={() => setMobileMenuOpen(false)}>
             {t.nav.home}
           </MobileNavLink>
-          
-          <MobileNavLink 
-            href="/projects" 
-            onClick={() => setMobileMenuOpen(false)}
-          >
+
+          {/* <MobileNavLink href="/projects" onClick={() => setMobileMenuOpen(false)}>
             {t.nav.projects}
+          </MobileNavLink> */}
+
+          <MobileNavLink href="/emprendedores" onClick={() => setMobileMenuOpen(false)}>
+            {t.nav.entrepreneurs}
           </MobileNavLink>
-          
-          <MobileNavLink 
-            href="/contact" 
-            onClick={() => setMobileMenuOpen(false)}
-          >
+
+          <MobileNavLink href="/contacto" onClick={() => setMobileMenuOpen(false)}>
             {t.nav.contact}
           </MobileNavLink>
 
@@ -195,9 +186,7 @@ export function Header() {
                 className="rounded-full object-cover"
               />
             </div>
-            <span className="leading-none pt-1">
-              {locale === 'es' ? 'Español' : 'English'}
-            </span>
+            <span className="leading-none pt-1">{locale === 'es' ? 'Español' : 'English'}</span>
           </button>
         </div>
       </div>
@@ -208,13 +197,13 @@ export function Header() {
 /**
  * Desktop Navigation Link Component
  */
-function NavLink({ 
-  href, 
-  children, 
-  active = false 
-}: { 
-  href: string; 
-  children: React.ReactNode; 
+function NavLink({
+  href,
+  children,
+  active = false,
+}: {
+  href: string;
+  children: React.ReactNode;
   active?: boolean;
 }) {
   return (
@@ -222,9 +211,10 @@ function NavLink({
       href={href}
       className={`
         text-sm lg:text-base transition-all duration-300 whitespace-nowrap
-        ${active 
-          ? 'bg-primary-500/20 text-white font-medium shadow-sm' 
-          : 'text-white/60 font-light hover:text-white hover:bg-white/5' 
+        ${
+          active
+            ? 'bg-primary-500/20 text-white font-medium shadow-sm'
+            : 'text-white/60 font-light hover:text-white hover:bg-white/5'
         }
       `}
       style={{
@@ -241,14 +231,14 @@ function NavLink({
 /**
  * Mobile Navigation Link Component - Fullscreen Menu Style
  */
-function MobileNavLink({ 
-  href, 
-  children, 
+function MobileNavLink({
+  href,
+  children,
   active = false,
-  onClick
-}: { 
-  href: string; 
-  children: React.ReactNode; 
+  onClick,
+}: {
+  href: string;
+  children: React.ReactNode;
   active?: boolean;
   onClick?: () => void;
 }) {
@@ -258,25 +248,20 @@ function MobileNavLink({
       onClick={onClick}
       className={`
         w-full max-w-sm text-center text-xl font-light transition-all duration-300
-        ${active 
-          ? 'text-white font-medium' 
-          : 'text-white/70 hover:text-white' 
-        }
+        ${active ? 'text-white font-medium' : 'text-white/70 hover:text-white'}
       `}
       style={{
         paddingTop: '1.25rem',
         paddingBottom: '1.25rem',
         borderRadius: '1.5rem',
-        background: active 
-          ? 'rgba(59, 111, 217, 0.12)' 
-          : 'rgba(255, 255, 255, 0.015)',
+        background: active ? 'rgba(59, 111, 217, 0.12)' : 'rgba(255, 255, 255, 0.015)',
         backdropFilter: 'blur(16px)',
         WebkitBackdropFilter: 'blur(16px)',
-        border: active 
-          ? '1px solid rgba(255, 255, 255, 0.1)' 
+        border: active
+          ? '1px solid rgba(255, 255, 255, 0.1)'
           : '1px solid rgba(255, 255, 255, 0.03)',
-        boxShadow: active 
-          ? '0 4px 20px rgba(59, 111, 217, 0.15)' 
+        boxShadow: active
+          ? '0 4px 20px rgba(59, 111, 217, 0.15)'
           : '0 2px 10px rgba(0, 0, 0, 0.05)',
       }}
     >
