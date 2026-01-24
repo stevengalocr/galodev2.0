@@ -10,8 +10,6 @@ export default function Home() {
       {/* Edge Fade Overlays for seamless visual continuity */}
       <div className="fade-top" />
       <div className="fade-bottom" />
-      <div className="fade-left" />
-      <div className="fade-right" />
       
       {/* Content Layer */}
       <div className="relative z-20 h-screen flex flex-col">

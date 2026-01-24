@@ -12,7 +12,7 @@ export function Hero() {
       style={{ marginBottom: '6.5vh' }}
     >
       {/* Bitmoji Avatar */}
-      <div className="relative z-10 w-full max-w-[160px] sm:max-w-[200px] md:max-w-[240px] lg:max-w-[280px] xl:max-w-[300px] h-auto object-contain drop-shadow-2xl animate-fade-in-up origin-bottom">
+      <div className="relative z-10 w-full max-w-[180px] sm:max-w-[200px] md:max-w-[240px] lg:max-w-[260px] xl:max-w-[280px] h-auto object-contain drop-shadow-2xl animate-fade-in-up origin-bottom">
         <TechFloatingIcons />
         <Image 
           src="/images/hero-bitmoji.png" 
@@ -26,18 +26,18 @@ export function Hero() {
 
       {/* Text Content - With proper horizontal padding */}
       <div className="flex flex-col items-center text-center space-y-2 sm:space-y-3 -mt-6 sm:-mt-10 md:-mt-14 lg:-mt-20 xl:-mt-28 z-10 pb-[10vh] lg:pb-[5vh] px-5 sm:px-8 md:px-12">
-        {/* Brand Name */}
-        <h1 className="text-5xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white drop-shadow-lg">
+        {/* Brand Name - Solid White, No Gradient */}
+        <h1 className="text-5xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white drop-shadow-md">
           {t.home.hero.name}
         </h1>
 
-        {/* Role */}
-        <h2 className="text-xl sm:text-2xl md:text-3xl font-medium text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-purple-300 tracking-wide">
+        {/* Role - Solid Accent Color, No Gradient */}
+        <h2 className="text-xl sm:text-2xl md:text-3xl font-medium text-blue-400 tracking-wide drop-shadow-sm">
           {t.home.hero.role}
         </h2>
 
-        {/* Description */}
-        <p className="max-w-[90vw] sm:max-w-md md:max-w-lg lg:max-w-xl text-base sm:text-lg text-white/70 font-light leading-relaxed">
+        {/* Description - Clean Text, No Glass Panel */}
+        <p className="max-w-[90vw] sm:max-w-md md:max-w-lg lg:max-w-xl text-base sm:text-lg text-gray-300 font-light leading-relaxed mt-2">
           {t.home.hero.description}
         </p>
       </div>
