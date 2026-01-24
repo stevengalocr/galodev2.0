@@ -1,4 +1,3 @@
-import { Header } from '@/components/layout/header';
 import { Hero } from '@/components/home/hero';
 
 export default function Home() {
@@ -13,7 +12,6 @@ export default function Home() {
       
       {/* Content Layer */}
       <div className="relative z-20 h-screen flex flex-col">
-        <Header />
         
         {/* Main Content Area - Hero positioned from bottom 8vh */}
         <main className="flex-1 flex flex-col items-center justify-end">
