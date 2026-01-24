@@ -23,7 +23,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
-      <body className={`${outfit.variable} font-sans antialiased`}>
+      <body className={`${outfit.variable} font-sans antialiased`} suppressHydrationWarning>
         <SupabaseProvider>
           <LanguageProvider>
             {children}
