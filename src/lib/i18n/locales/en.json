@@ -6,6 +6,7 @@
   "nav": {
     "home": "Home",
     "projects": "Projects",
+    "entrepreneurs": "For Entrepreneurs",
     "contact": "Contact Us"
   },
   "home": {
@@ -35,5 +36,102 @@
     "userInfo": "User Information",
     "userId": "User ID",
     "lastSignIn": "Last Sign In"
+  },
+  "entrepreneurs": {
+    "hero": {
+      "badge": "Solutions for Entrepreneurs",
+      "titlePart1": "Software that helps",
+      "titleHighlight": "real businesses",
+      "description": "We create modern digital solutions for entrepreneurs who want to sell more and operate better."
+    },
+    "valueProp": {
+      "title": "We don't sell websites.",
+      "subtitle": "We create software that generates results."
+    }
+  },
+  "contact": {
+    "pageTitle": "Contact Us",
+    "ctaTitle": "Do you have a business and want a real digital solution?",
+    "ctaDescription": "Let's talk and build the best tool for you.",
+    "form": {
+      "namePlaceholder": "Your name",
+      "emailPlaceholder": "Your email",
+      "messagePlaceholder": "How can we help you?",
+      "submit": "Send email",
+      "submitting": "Opening email...",
+      "errors": {
+        "nameRequired": "Name is required.",
+        "nameShort": "Name is too short.",
+        "emailRequired": "Email is required.",
+        "emailInvalid": "Enter a valid email.",
+        "messageRequired": "Message is required.",
+        "messageShort": "Message must be at least 10 characters."
+      }
+    }
+  },
+  "products": {
+    "sectionTitle": "We create software that generates results.",
+    "swipeHint": "Swipe to explore our systems.",
+    "landing": {
+      "title": "Landing Pages",
+      "desc": "Pages optimized to convert visitors into real customers.",
+      "audience": "Services and Personal Brands",
+      "short": "Web Pages",
+      "features": {
+        "0": "Conversion-oriented design",
+        "1": "Lead capture",
+        "2": "WhatsApp integration",
+        "3": "Ultra fast loading"
+      }
+    },
+    "ecommerce": {
+      "title": "Custom E-commerce",
+      "desc": "Fast, scalable, and personalized online stores for your brand.",
+      "audience": "Brands and Stores",
+      "short": "E-commerce",
+      "features": {
+        "0": "Optimized checkout",
+        "1": "Simple management panel",
+        "2": "Payment integrations",
+        "3": "Ready to scale"
+      }
+    },
+    "chatbot": {
+      "title": "AI Sales Chatbot",
+      "desc": "Automate responses, sell 24/7, and stop losing customers.",
+      "audience": "24/7 Support",
+      "short": "Chatbots",
+      "features": {
+        "0": "Automated attention",
+        "1": "Lead qualification",
+        "2": "Smart responses",
+        "3": "Web and WhatsApp integration"
+      }
+    },
+    "crm": {
+      "title": "Complete Systems",
+      "desc": "Control leads, customers, and sales from one place.",
+      "audience": "Sales Teams",
+      "short": "Systems",
+      "features": {
+        "0": "Opportunity management",
+        "1": "Sales stages",
+        "2": "Clear dashboard",
+        "3": "Ideal for small teams"
+      }
+    },
+    "allinone": {
+      "title": "All-in-One",
+      "desc": "The complete solution for businesses that want to scale.",
+      "audience": "Expanding Businesses",
+      "short": "All-in-One",
+      "features": {
+        "0": "Landing + sales",
+        "1": "Automation",
+        "2": "Chatbot",
+        "3": "Control panel",
+        "4": "Scalable infrastructure"
+      }
+    }
   }
 }

@@ -2,10 +2,17 @@
  * Public Routes Layout
  */
 
+import { Header } from '@/components/layout/header';
+
 export default function PublicLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  return <>{children}</>;
+  return (
+    <>
+      <Header />
+      {children}
+    </>
+  );
 }
