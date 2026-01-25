@@ -69,7 +69,12 @@ export default function CTASection() {
   };
 
   return (
-    <section className="py-24 px-4 relative overflow-hidden bg-background flex flex-col items-center">
+    <section
+      style={{
+        marginTop: '4rem',
+      }}
+      className="py-24 px-4 relative overflow-hidden bg-background flex flex-col items-center"
+    >
       {/* Background Effects */}
       <div className="absolute inset-0 bg-gradient-to-t from-black via-primary-900/20 to-transparent pointer-events-none" />
 
