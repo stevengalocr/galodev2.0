@@ -17,13 +17,7 @@ export default function ValueProposition() {
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-        >
-          <h2 className="md:text-6xl font-bold text-white mb-8 leading-tight">
-            {t.entrepreneurs.valueProp.title}
-            <br />
-            <span className="text-primary-300">{t.entrepreneurs.valueProp.subtitle}</span>
-          </h2>
-        </motion.div>
+        ></motion.div>
       </div>
     </section>
   );
