@@ -9,6 +9,10 @@
     "entrepreneurs": "For Entrepreneurs",
     "contact": "Contact Us"
   },
+  "footer": {
+    "madeByPrefix": "Made by ",
+    "allRightsReserved": "All rights reserved"
+  },
   "home": {
     "title": "Welcome",
     "subtitle": "Custom software development",
