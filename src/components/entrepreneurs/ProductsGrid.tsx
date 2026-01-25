@@ -10,13 +10,27 @@ import {
 } from 'react-icons/fi';
 import ProductCard from './ProductCard';
 import { motion } from 'framer-motion';
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { Product } from '@/data/products'; // Keep interface
 
 export default function ProductsGrid() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [activeProductIndex, setActiveProductIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
   const t = useTranslations();
+
+  // Handle window resize for responsive 3D layout
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    // Initial check
+    handleResize();
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   // Dynamic products array based on current language
   const products: Product[] = [
@@ -56,22 +70,22 @@ export default function ProductsGrid() {
       shortTitle: t.products.ecommerce.short,
     },
     {
-      id: 'chatbot-ai',
-      title: t.products.chatbot.title,
-      description: t.products.chatbot.desc,
-      targetAudience: t.products.chatbot.audience,
-      mainBenefit: 'Automation',
-      icon: FiMessageSquare,
+      id: 'all-in-one',
+      title: t.products.allinone.title,
+      description: t.products.allinone.desc,
+      targetAudience: t.products.allinone.audience,
+      mainBenefit: 'Growth',
+      icon: FiBriefcase,
       features: [
-        t.products.chatbot.features['0'],
-        t.products.chatbot.features['1'],
-        t.products.chatbot.features['2'],
-        t.products.chatbot.features['3'],
+        t.products.allinone.features['0'],
+        t.products.allinone.features['1'],
+        t.products.allinone.features['2'],
+        t.products.allinone.features['3'],
+        t.products.allinone.features['4'],
       ],
-      image: '/products/chatbot_brand.png',
+      image: '/products/allinone_min.png',
       ctaText: 'Ver más',
-      shortTitle: t.products.chatbot.short,
-      imageScale: 1.3,
+      shortTitle: t.products.allinone.short,
     },
     {
       id: 'mini-crm',
@@ -91,22 +105,22 @@ export default function ProductsGrid() {
       shortTitle: t.products.crm.short,
     },
     {
-      id: 'all-in-one',
-      title: t.products.allinone.title,
-      description: t.products.allinone.desc,
-      targetAudience: t.products.allinone.audience,
-      mainBenefit: 'Growth',
-      icon: FiBriefcase,
+      id: 'chatbot-ai',
+      title: t.products.chatbot.title,
+      description: t.products.chatbot.desc,
+      targetAudience: t.products.chatbot.audience,
+      mainBenefit: 'Automation',
+      icon: FiMessageSquare,
       features: [
-        t.products.allinone.features['0'],
-        t.products.allinone.features['1'],
-        t.products.allinone.features['2'],
-        t.products.allinone.features['3'],
-        t.products.allinone.features['4'],
+        t.products.chatbot.features['0'],
+        t.products.chatbot.features['1'],
+        t.products.chatbot.features['2'],
+        t.products.chatbot.features['3'],
       ],
-      image: '/products/allinone_min.jpg',
+      image: '/products/chatbot_brand.png',
       ctaText: 'Ver más',
-      shortTitle: t.products.allinone.short,
+      shortTitle: t.products.chatbot.short,
+      imageScale: 1.3,
     },
   ];
 
@@ -165,19 +179,85 @@ export default function ProductsGrid() {
           </p>
         </div>
 
-        {/* Carousel Container */}
+        {/* 3D Coverflow Container */}
         <div
-          ref={containerRef}
-          onScroll={handleScroll}
-          className="w-full overflow-x-auto snap-x snap-mandatory pt-4 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+          className="relative w-full h-[500px] flex justify-center items-center my-8 md:my-16"
+          style={{ perspective: '1200px', transformStyle: 'preserve-3d' }}
         >
-          <div className="flex gap-6 md:gap-8 px-8 md:px-12 w-max">
-            {products.map((product, index) => (
-              <div key={product.id} className="w-[300px] md:w-[400px] flex-shrink-0 snap-center">
-                <ProductCard product={product} index={index} />
-              </div>
-            ))}
-          </div>
+          {products.map((product, index) => {
+            const offset = index - activeProductIndex;
+            const absOffset = Math.abs(offset);
+            const isActive = offset === 0;
+
+            // Visual configuration
+            const xOffset = 450; // Increased spacing for wider distribution
+            const zOffset = -200; // depth spacing
+            const rotateAngle = 30; // rotation angle in degrees
+
+            // Calculate specific 3D properties
+            let translateX = offset * xOffset;
+            let translateZ = absOffset * zOffset;
+            let rotateY = 0;
+
+            if (offset < 0) {
+              rotateY = rotateAngle; // Left items face right
+            } else if (offset > 0) {
+              rotateY = -rotateAngle; // Right items face left
+            }
+
+            const scale = isActive ? 1.1 : Math.max(0.8, 1 - absOffset * 0.1);
+            const opacity = isActive ? 1 : Math.max(0.4, 1 - absOffset * 0.3);
+            const zIndex = 100 - absOffset;
+
+            // Only render visibly adjacent items (show 3 total: active + 1 on each side)
+            if (absOffset > 1) return null;
+
+            return (
+              <motion.div
+                key={product.id}
+                initial={false}
+                animate={{
+                  x: translateX,
+                  z: translateZ,
+                  rotateY: rotateY,
+                  scale: scale,
+                  opacity: opacity,
+                  zIndex: zIndex,
+                }}
+                transition={{
+                  duration: 0.6,
+                  type: 'spring',
+                  stiffness: 150,
+                  damping: 20,
+                }}
+                style={{
+                  position: 'absolute',
+                  transformStyle: 'preserve-3d',
+                  top: '50%',
+                  left: '50%',
+                  marginLeft: isMobile ? -150 : -200, // Half width center fix
+                  marginTop: isMobile ? -225 : -200, // Approx height center fix
+                  width: isMobile ? 300 : 400,
+                  cursor: isActive ? 'default' : 'pointer',
+                  // Reflection Effect
+                  WebkitBoxReflect: isActive
+                    ? 'below 0px linear-gradient(transparent, transparent 70%, rgba(0,0,0,0.3))'
+                    : undefined,
+                }}
+                onClick={() => scrollToProduct(index)}
+              >
+                <div
+                  className={`relative w-full h-full transition-all duration-300 ${isActive ? 'brightness-110 drop-shadow-2xl' : 'grayscale-[0.5] hover:grayscale-0'}`}
+                >
+                  {/* Glass overlay for inactive items to signify depth */}
+                  {!isActive && (
+                    <div className="absolute inset-0 bg-black/40 z-50 rounded-3xl pointer-events-none transition-opacity duration-300" />
+                  )}
+                  <ProductCard product={product} index={index} />
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
 
         {/* Navigation Dock - Header Style */}
