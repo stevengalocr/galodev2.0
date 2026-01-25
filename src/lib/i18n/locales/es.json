@@ -9,6 +9,10 @@
     "entrepreneurs": "Para emprendedores",
     "contact": "Contáctanos"
   },
+  "footer": {
+    "madeByPrefix": "Página hecha por ",
+    "allRightsReserved": "Todos los derechos reservados"
+  },
   "home": {
     "title": "Bienvenido",
     "subtitle": "Desarrollo de software a medida",

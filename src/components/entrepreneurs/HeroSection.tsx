@@ -26,6 +26,8 @@ export default function HeroSection() {
           <span
             style={{
               padding: '10px',
+              marginTop: '1.5rem',
+              marginBottom: '2.5rem',
             }}
             className="inline-flex items-center justify-center px-10 py-4 mb-10 rounded-full border border-primary-500/30 bg-primary-500/10 text-primary-300 text-sm font-bold backdrop-blur-sm tracking-[0.2em] shadow-lg shadow-primary-500/10 uppercase"
           >
