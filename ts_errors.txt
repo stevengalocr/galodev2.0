@@ -1,0 +1,5 @@
+.next/types/validator.ts(53,39): error TS2307: Cannot find module '../../src/app/(auth)/login/page.js' or its corresponding type declarations.
+.next/types/validator.ts(62,39): error TS2307: Cannot find module '../../src/app/(auth)/register/page.js' or its corresponding type declarations.
+.next/types/validator.ts(71,39): error TS2307: Cannot find module '../../src/app/(dashboard)/dashboard/page.js' or its corresponding type declarations.
+.next/types/validator.ts(129,39): error TS2307: Cannot find module '../../src/app/(dashboard)/layout.js' or its corresponding type declarations.
+src/components/shared/logout-button.tsx(9,30): error TS2307: Cannot find module '@/features/auth/auth.actions' or its corresponding type declarations.
