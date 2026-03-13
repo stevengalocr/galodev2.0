@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import { Outfit } from 'next/font/google';
 import './globals.css';
-import { SupabaseProvider } from '@/providers/supabase.provider';
 import { LanguageProvider } from '@/providers/language.provider';
 
 // Outfit font - similar to Neuething Sans (modern, clean, geometric)
@@ -12,8 +11,11 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: 'GaloDev',
-  description: 'Desarrollo de software a medida | Custom software development',
+  title: 'GaloDev | Desarrollador Full Stack',
+  description:
+    'Portafolio profesional de Steven Galo. Desarrollo de software a medida, aplicaciones web y móviles. Custom software development.',
+  keywords:
+    'desarrollo de software, full stack developer, programador, costa rica, galodev, react, nextjs, aplicaciones web, freelance',
 };
 
 export default function RootLayout({
@@ -24,11 +26,7 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body className={`${outfit.variable} font-sans antialiased`} suppressHydrationWarning>
-        <SupabaseProvider>
-          <LanguageProvider>
-            {children}
-          </LanguageProvider>
-        </SupabaseProvider>
+        <LanguageProvider>{children}</LanguageProvider>
       </body>
     </html>
   );
