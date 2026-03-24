@@ -143,6 +143,7 @@
     "badge": "Portafolio Profesional",
     "subtitle": "Full Stack Developer · IA & Modern Tech · San José, Costa Rica",
     "role": "Full-Stack Developer",
+    "swipeHint": "Desliza para ver más",
     "bio": {
       "prefix": "Ingeniero en Sistemas con más de",
       "yearsExperience": "años de experiencia",
