@@ -3,6 +3,7 @@ import EntrepreneursHero from '@/components/entrepreneurs/HeroSection';
 import ValueProposition from '@/components/entrepreneurs/ValueProposition';
 import ProductsGrid from '@/components/entrepreneurs/ProductsGrid';
 import CTASection from '@/components/entrepreneurs/CTASection';
+import PortfolioSection from '@/components/portfolio/PortfolioSection';
 
 export default function Home() {
   return (
@@ -24,6 +25,9 @@ export default function Home() {
 
           {/* Scroll Indicator Hint could go here if requested, but user removed it before. */}
         </section>
+
+        {/* Portfolio Section */}
+        <PortfolioSection />
 
         {/* Entrepreneurs Section */}
         <div

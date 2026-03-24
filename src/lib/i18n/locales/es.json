@@ -6,6 +6,7 @@
   "nav": {
     "home": "Inicio",
     "projects": "Proyectos",
+    "portfolio": "Portafolio",
     "entrepreneurs": "Para emprendedores",
     "contact": "Contáctanos"
   },
@@ -135,6 +136,82 @@
         "2": "Chatbot",
         "3": "Panel de control",
         "4": "Infraestructura escalable"
+      }
+    }
+  },
+  "portfolio": {
+    "badge": "Portafolio Profesional",
+    "subtitle": "Full Stack Developer · IA & Modern Tech · San José, Costa Rica",
+    "role": "Full-Stack Developer",
+    "bio": {
+      "prefix": "Ingeniero en Sistemas con más de",
+      "yearsExperience": "años de experiencia",
+      "suffix": "construyendo aplicaciones web completas. Conecto el mundo técnico con el funcional, valido requerimientos y entrego soluciones reales en producción."
+    },
+    "education": {
+      "label": "Educación",
+      "university": "Universidad Fidélitas",
+      "degree": "Bachillerato en Ing. Sistemas · 2020 – 2023",
+      "currentDegree": "Licenciatura · Calidad del Software",
+      "currentStatus": "En curso"
+    },
+    "languages": {
+      "label": "Idiomas",
+      "spanish": "Español",
+      "spanishLevel": "Nativo",
+      "english": "Inglés",
+      "englishLevel": "B1 Intermedio"
+    },
+    "skills": {
+      "title": "Stack Técnico",
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "database": "Base de Datos",
+      "toolsDevops": "Tools & DevOps",
+      "aiModern": "IA & Modern",
+      "methodologies": "Metodologías"
+    },
+    "experience": {
+      "title": "Experiencia",
+      "entries": {
+        "0": {
+          "role": "Full Stack Developer",
+          "company": "ePRAC",
+          "period": "Junio 2023 – Presente",
+          "description": "Desarrollo y mantenimiento de sistemas web empresariales con Angular, Go y C#. Integración de APIs RESTful, coordinación de despliegues en IIS, validación entre sistemas y puente entre el equipo técnico y el cliente."
+        },
+        "1": {
+          "role": "Programador (Pasantía)",
+          "company": "4Geeks",
+          "period": "Julio 2022 – Marzo 2023",
+          "description": "Desarrollo de aplicación web con React e integración en equipo para app móvil en Flutter enfocada en payment links."
+        },
+        "2": {
+          "role": "Creador de Contenido Educativo",
+          "company": "Core-Code",
+          "period": "",
+          "description": "Producción de contenido semanal sobre desarrollo web en redes sociales: videos, proyectos prácticos y materiales técnicos para desarrolladores en crecimiento."
+        }
+      }
+    },
+    "projects": {
+      "title": "Proyectos Destacados",
+      "entries": {
+        "0": {
+          "title": "Sistemas Web Empresariales",
+          "tech": ".NET · SQL Server · Angular",
+          "description": "Sistemas internos con despliegues en IIS, coordinación de módulos y validación de flujos de datos empresariales."
+        },
+        "1": {
+          "title": "APIs Backend para Apps Web",
+          "tech": "Go · C# · REST",
+          "description": "APIs RESTful robustas como backend de aplicaciones, con soporte directo a equipos frontend para integración."
+        },
+        "2": {
+          "title": "GaloDev — Marca Personal",
+          "tech": "Contenido · Proyectos Completos",
+          "description": "Plataforma personal con contenido técnico en TikTok e Instagram, enfocada en desarrolladores en crecimiento."
+        }
       }
     }
   }
