@@ -21,6 +21,7 @@ import {
   Building2,
   Layers,
   Code2,
+  ChevronRight,
 } from 'lucide-react';
 import Image from 'next/image';
 import { useLanguage } from '@/providers/language.provider';
@@ -325,22 +326,29 @@ export default function PortfolioSection() {
           </motion.aside>
 
           {/* ══ RIGHT — Content ══ */}
-          <div className="flex-1 min-w-0 flex flex-col gap-6">
+          <div className="flex-1 min-w-0 flex flex-col gap-6 w-full max-w-full">
             {/* Stack Técnico */}
-            <motion.div {...fadeUp(0.15)}>
+            <motion.div {...fadeUp(0.15)} className="w-full min-w-0 max-w-full">
               <Panel>
-                <PanelHeader icon={Terminal} title={p.skills.title} />
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-2">
+                  <PanelHeader icon={Terminal} title={p.skills.title} />
+                  <div className="sm:hidden flex items-center gap-1.5 text-blue-400 opacity-80 animate-pulse pb-2">
+                    <span className="text-[11px] font-medium tracking-wide">{p.swipeHint}</span>
+                    <ChevronRight size={14} />
+                  </div>
+                </div>
                 <motion.div
                   variants={staggerContainer}
                   initial="initial"
                   whileInView="whileInView"
                   viewport={{ once: true }}
-                  className="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-6 mt-8 sm:grid sm:grid-cols-2 xl:grid-cols-3 sm:gap-6 sm:overflow-visible sm:pb-0 hide-scrollbar [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+                  className="flex w-full max-w-[85vw] mx-auto overflow-x-auto snap-x snap-mandatory gap-6 pb-4 sm:grid sm:grid-cols-2 xl:grid-cols-3 sm:gap-6 sm:overflow-visible sm:pb-0 touch-pan-x [&::-webkit-scrollbar]:h-1.5 [&::-webkit-scrollbar-track]:bg-white/5 [&::-webkit-scrollbar-thumb]:bg-blue-500/50 [&::-webkit-scrollbar-thumb]:rounded-full"
+                  style={{ WebkitOverflowScrolling: 'touch' }}
                 >
                   {Array.from({ length: 2 }).map((_, groupIndex) => (
                     <div
                       key={groupIndex}
-                      className="snap-center shrink-0 w-[85vw] sm:w-auto flex flex-col gap-6 sm:contents"
+                      className="snap-center shrink-0 w-[75vw] max-w-[320px] sm:w-auto sm:max-w-none flex flex-col gap-6 sm:contents"
                     >
                       {skills.slice(groupIndex * 3, groupIndex * 3 + 3).map((s, i) => (
                         <motion.div key={i} variants={cardFade} custom={groupIndex * 3 + i}>
@@ -354,16 +362,25 @@ export default function PortfolioSection() {
             </motion.div>
 
             {/* Experiencia */}
-            <motion.div {...fadeUp(0.2)}>
+            <motion.div {...fadeUp(0.2)} className="w-full min-w-0 max-w-full">
               <Panel accent>
-                <PanelHeader icon={Briefcase} title={p.experience.title} />
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-2">
+                  <PanelHeader icon={Briefcase} title={p.experience.title} />
+                  <div className="sm:hidden flex items-center gap-1.5 text-blue-400 opacity-80 animate-pulse pb-2">
+                    <span className="text-[11px] font-medium tracking-wide">{p.swipeHint}</span>
+                    <ChevronRight size={14} />
+                  </div>
+                </div>
                 {/* Experiencia Carousel/Grid */}
-                <div className="mt-8 relative" style={{ marginTop: '10px' }}>
-                  <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-6 sm:grid sm:grid-cols-3 sm:gap-6 sm:overflow-visible sm:pb-0 hide-scrollbar [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+                <div className="mt-4 sm:mt-8 relative w-full min-w-0 max-w-full">
+                  <div 
+                    className="flex w-full max-w-[85vw] mx-auto overflow-x-auto snap-x snap-mandatory gap-4 pb-4 sm:grid sm:grid-cols-3 sm:gap-6 sm:overflow-visible sm:pb-0 touch-pan-x [&::-webkit-scrollbar]:h-1.5 [&::-webkit-scrollbar-track]:bg-white/5 [&::-webkit-scrollbar-thumb]:bg-blue-500/50 [&::-webkit-scrollbar-thumb]:rounded-full"
+                    style={{ WebkitOverflowScrolling: 'touch' }}
+                  >
                     {experience.map((exp, i) => (
                       <div
                         key={i}
-                        className="snap-center shrink-0 w-[85vw] sm:w-auto flex flex-col"
+                        className="snap-center shrink-0 w-[75vw] max-w-[320px] sm:w-auto sm:max-w-none flex flex-col"
                       >
                         <ExpCard {...exp} />
                       </div>
@@ -374,22 +391,29 @@ export default function PortfolioSection() {
             </motion.div>
 
             {/* Proyectos */}
-            <motion.div {...fadeUp(0.25)}>
+            <motion.div {...fadeUp(0.25)} className="w-full min-w-0 max-w-full">
               <Panel>
-                <PanelHeader icon={Rocket} title={p.projects.title} />
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-2">
+                  <PanelHeader icon={Rocket} title={p.projects.title} />
+                  <div className="sm:hidden flex items-center gap-1.5 text-blue-400 opacity-80 animate-pulse pb-2">
+                    <span className="text-[11px] font-medium tracking-wide">{p.swipeHint}</span>
+                    <ChevronRight size={14} />
+                  </div>
+                </div>
                 <motion.div
                   variants={staggerContainer}
                   initial="initial"
                   whileInView="whileInView"
                   viewport={{ once: true }}
-                  className="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-6 mt-8 sm:grid sm:grid-cols-3 sm:gap-6 sm:overflow-visible sm:pb-0 hide-scrollbar [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+                  className="flex w-full max-w-[85vw] mx-auto overflow-x-auto snap-x snap-mandatory gap-4 pb-4 mt-4 sm:mt-8 sm:grid sm:grid-cols-3 sm:gap-6 sm:overflow-visible sm:pb-0 touch-pan-x [&::-webkit-scrollbar]:h-1.5 [&::-webkit-scrollbar-track]:bg-white/5 [&::-webkit-scrollbar-thumb]:bg-blue-500/50 [&::-webkit-scrollbar-thumb]:rounded-full"
+                  style={{ WebkitOverflowScrolling: 'touch' }}
                 >
                   {projects.map((pr, i) => (
                     <motion.div
                       key={i}
                       variants={cardFade}
                       custom={i}
-                      className="snap-center shrink-0 w-[85vw] sm:w-auto flex flex-col"
+                      className="snap-center shrink-0 w-[75vw] max-w-[320px] sm:w-auto sm:max-w-none flex flex-col"
                     >
                       <ProjectCard {...pr} />
                     </motion.div>
@@ -514,7 +538,7 @@ function LangBar({
 function Panel({ children, accent = false }: { children: React.ReactNode; accent?: boolean }) {
   return (
     <div
-      className="rounded-[2rem] p-[25px] sm:p-10 lg:p-12"
+      className="rounded-[2rem] p-[25px] sm:p-10 lg:p-12 w-full min-w-0"
       style={{
         padding: '12px',
         background: accent
