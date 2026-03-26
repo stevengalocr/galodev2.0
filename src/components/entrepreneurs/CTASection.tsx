@@ -10,18 +10,20 @@ import { useTranslations } from '@/providers/language.provider';
 
 export default function CTASection() {
   const t = useTranslations();
-  
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    telefono: '', 
+    telefono: '',
     message: '',
-    honeypot: '', 
+    honeypot: '',
   });
-  
+
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [status, setStatus] = useState<'idle' | 'success' | 'error' | 'timeoutError' | 'spamError'>('idle');
+  const [status, setStatus] = useState<'idle' | 'success' | 'error' | 'timeoutError' | 'spamError'>(
+    'idle'
+  );
 
   // States para Modal Anti-Spam
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -61,19 +63,15 @@ export default function CTASection() {
   const validateForm = () => {
     const newErrors: { [key: string]: string } = {};
 
-    // Name validation
     if (!formData.name.trim()) newErrors.name = t.contact.form.errors.nameRequired;
     else if (formData.name.length < 2) newErrors.name = t.contact.form.errors.nameShort;
 
-    // Email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!formData.email.trim()) newErrors.email = t.contact.form.errors.emailRequired;
     else if (!emailRegex.test(formData.email)) newErrors.email = t.contact.form.errors.emailInvalid;
 
-    // Telefono validation
-    if (!formData.telefono.trim()) newErrors.telefono = 'El teléfono es requerido.';
+    if (!formData.telefono.trim()) newErrors.telefono = t.contact.form.errors.phoneRequired;
 
-    // Message validation
     if (!formData.message.trim()) newErrors.message = t.contact.form.errors.messageRequired;
     else if (formData.message.length < 10) newErrors.message = t.contact.form.errors.messageShort;
 
@@ -125,7 +123,6 @@ export default function CTASection() {
       const data = await response.json();
 
       if (response.ok && data.success) {
-        // Reset form
         setFormData({ name: '', email: '', telefono: '', message: '', honeypot: '' });
         setErrors({});
         setStatus('success');
@@ -157,7 +154,10 @@ export default function CTASection() {
             viewport={{ once: true }}
             className="mx-auto flex flex-col items-center text-center"
           >
-            <h2 className="w-full text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            <h2
+              className="w-full text-3xl md:text-5xl font-bold text-white mb-6 leading-tight"
+              style={{ padding: '8px' }}
+            >
               {t.contact.ctaTitle}
             </h2>
             <p className="text-xl text-gray-300 mb-12 font-light leading-relaxed">
@@ -194,21 +194,22 @@ export default function CTASection() {
             </div>
 
             {/* Micro Form */}
-            <div className="w-full max-w-lg mx-auto">
+            <div className="w-full max-w-lg mx-auto" style={{ padding: '12px' }}>
               {status === 'success' ? (
-                <div className="bg-white/5 border border-white/10 backdrop-blur-sm shadow-2xl relative rounded-3xl p-8 flex flex-col items-center justify-center text-center animation-fade-in" style={{ padding: '2rem', marginBottom: '4rem' }}>
+                <div
+                  className="bg-white/5 border border-white/10 backdrop-blur-sm shadow-2xl relative rounded-3xl p-8 flex flex-col items-center justify-center text-center animation-fade-in"
+                  style={{ padding: '2rem', marginBottom: '4rem' }}
+                >
                   <CheckCircle className="h-16 w-16 text-blue-500 mb-6" />
                   <h3 className="text-2xl font-semibold text-white mb-2">
-                    ¡Mensaje Enviado!
+                    {t.contact.form.successTitle}
                   </h3>
-                  <p className="text-zinc-400 mb-6">
-                    Hemos recibido su propuesta correctamente. Nos pondremos en contacto con usted a la brevedad posible.
-                  </p>
+                  <p className="text-zinc-400 mb-6">{t.contact.form.successMessage}</p>
                   <button
                     onClick={() => setStatus('idle')}
                     className="px-6 py-2 rounded-full border border-zinc-700 text-sm font-medium hover:bg-zinc-800 transition-colors text-white"
                   >
-                    Enviar otro mensaje
+                    {t.contact.form.resetButton}
                   </button>
                 </div>
               ) : (
@@ -220,27 +221,21 @@ export default function CTASection() {
                   {status === 'error' && (
                     <div className="p-4 rounded-xl bg-red-500/10 border border-red-500/20 flex items-start gap-3 text-left">
                       <AlertCircle className="h-5 w-5 text-red-500 flex-shrink-0 mt-0.5" />
-                      <p className="text-sm text-red-200">
-                        Hubo un error de conexión al enviar. Por favor intenta nuevamente más tarde.
-                      </p>
+                      <p className="text-sm text-red-200">{t.contact.form.errorConnection}</p>
                     </div>
                   )}
 
                   {status === 'spamError' && (
                     <div className="p-4 rounded-xl bg-orange-500/10 border border-orange-500/20 flex items-start gap-3 text-left">
                       <AlertCircle className="h-5 w-5 text-orange-500 flex-shrink-0 mt-0.5" />
-                      <p className="text-sm text-orange-200">
-                        La verificación de seguridad fue incorrecta. Intente de nuevo.
-                      </p>
+                      <p className="text-sm text-orange-200">{t.contact.form.errorSpam}</p>
                     </div>
                   )}
 
                   {status === 'timeoutError' && (
                     <div className="p-4 rounded-xl bg-yellow-500/10 border border-yellow-500/20 flex items-start gap-3 text-left">
                       <Timer className="h-5 w-5 text-yellow-500 flex-shrink-0 mt-0.5" />
-                      <p className="text-sm text-yellow-200">
-                        El tiempo de validación se agotó. Por favor envíe la propuesta nuevamente.
-                      </p>
+                      <p className="text-sm text-yellow-200">{t.contact.form.errorTimeout}</p>
                     </div>
                   )}
 
@@ -260,7 +255,7 @@ export default function CTASection() {
                       style={{ padding: '1rem' }}
                       type="text"
                       required
-                      placeholder="Tu Nombre Completo *"
+                      placeholder={t.contact.form.fullNamePlaceholder}
                       value={formData.name}
                       onChange={(e) => {
                         setFormData({ ...formData, name: e.target.value });
@@ -279,7 +274,7 @@ export default function CTASection() {
                         style={{ padding: '1rem' }}
                         type="email"
                         required
-                        placeholder="Correo Electrónico *"
+                        placeholder={t.contact.form.emailFieldPlaceholder}
                         value={formData.email}
                         onChange={(e) => {
                           setFormData({ ...formData, email: e.target.value });
@@ -291,13 +286,13 @@ export default function CTASection() {
                         <p className="text-red-400 text-xs text-left mt-1 ml-2">{errors.email}</p>
                       )}
                     </div>
-                    
+
                     <div className="w-full">
                       <input
                         style={{ padding: '1rem' }}
                         type="tel"
                         required
-                        placeholder="Teléfono / WhatsApp *"
+                        placeholder={t.contact.form.phonePlaceholder}
                         value={formData.telefono}
                         onChange={(e) => {
                           setFormData({ ...formData, telefono: e.target.value });
@@ -306,7 +301,9 @@ export default function CTASection() {
                         className={`w-full px-5 py-4 rounded-xl bg-black/40 border ${errors.telefono ? 'border-red-500/50' : 'border-white/10'} text-white placeholder-gray-500 focus:outline-none focus:border-blue-500/50 focus:bg-black/60 transition-all`}
                       />
                       {errors.telefono && (
-                        <p className="text-red-400 text-xs text-left mt-1 ml-2">{errors.telefono}</p>
+                        <p className="text-red-400 text-xs text-left mt-1 ml-2">
+                          {errors.telefono}
+                        </p>
                       )}
                     </div>
                   </div>
@@ -314,7 +311,7 @@ export default function CTASection() {
                   <div className="w-full">
                     <textarea
                       style={{ padding: '1rem' }}
-                      placeholder="Detalles sobre tu proyecto o propuesta... *"
+                      placeholder={t.contact.form.messageDetailPlaceholder}
                       rows={3}
                       required
                       value={formData.message}
@@ -332,13 +329,10 @@ export default function CTASection() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    style={{
-                      marginTop: '0.5rem',
-                      padding: '0.5rem',
-                    }}
+                    style={{ marginTop: '0.5rem', padding: '0.5rem' }}
                     className={`w-full mt-2 flex items-center justify-center gap-3 px-8 py-4 bg-white/5 border border-white/10 backdrop-blur-md hover:bg-blue-500/20 hover:border-blue-500/50 text-white font-bold rounded-xl shadow-lg shadow-black/20 transition-all duration-300 transform ${isSubmitting ? 'opacity-50 cursor-not-allowed' : 'hover:-translate-y-0.5'}`}
                   >
-                    <span>{isSubmitting ? 'Enviando...' : t.contact.form.submit}</span>
+                    <span>{isSubmitting ? t.contact.form.submittingForm : t.contact.form.submit}</span>
                     {isSubmitting ? (
                       <Loader2 className="h-5 w-5 animate-spin" />
                     ) : (
@@ -368,12 +362,9 @@ export default function CTASection() {
             </div>
 
             <div className="flex flex-col gap-2">
-              <h3 className="text-2xl font-light text-white">
-                Verificación de Seguridad
-              </h3>
+              <h3 className="text-2xl font-light text-white">{t.contact.form.captchaTitle}</h3>
               <p className="text-zinc-400 text-sm leading-relaxed">
-                Para garantizar que es una propuesta real, por favor resuelve esta
-                sencilla suma antes de que se agote el tiempo.
+                {t.contact.form.captchaDescription}
               </p>
             </div>
 
@@ -393,7 +384,7 @@ export default function CTASection() {
                     handleFinalSubmit();
                   }
                 }}
-                placeholder="Resultado de la suma"
+                placeholder={t.contact.form.captchaPlaceholder}
                 className="w-full bg-zinc-950 border border-zinc-700 rounded-xl pl-6 pr-32 py-5 text-center text-2xl text-white placeholder:text-zinc-600 focus:outline-none focus:border-blue-500 transition-colors min-h-[4.5rem] [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
               />
 
@@ -415,7 +406,7 @@ export default function CTASection() {
                 }}
                 className="flex-1 py-4 px-2 rounded-xl border border-zinc-700 text-white font-medium hover:bg-zinc-800 transition-colors min-h-[3.5rem]"
               >
-                Cancelar
+                {t.contact.form.captchaCancel}
               </button>
               <button
                 type="button"
@@ -423,7 +414,7 @@ export default function CTASection() {
                 disabled={!captchaAnswer}
                 className="flex-1 py-4 px-2 rounded-xl bg-blue-600 text-white font-semibold hover:bg-blue-500 transition-colors disabled:opacity-50 disabled:bg-zinc-800 disabled:text-zinc-500 min-h-[3.5rem]"
               >
-                Confirmar
+                {t.contact.form.captchaConfirm}
               </button>
             </div>
           </div>
