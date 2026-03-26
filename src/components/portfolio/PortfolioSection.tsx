@@ -71,7 +71,7 @@ export default function PortfolioSection() {
     {
       icon: Terminal,
       category: p.skills.toolsDevops,
-      items: ['Git', 'Docker', 'Azure', 'Postman', 'IIS', 'ClickUp'],
+      items: ['Git', 'Docker', 'Azure', 'Postman', 'IIS'],
     },
     {
       icon: BrainCircuit,
@@ -133,7 +133,10 @@ export default function PortfolioSection() {
     <section
       id="portfolio"
       className="relative py-24 sm:py-32 overflow-hidden"
-      style={{ padding: '25px' }}
+      style={{
+        marginTop: '55px',
+        padding: '45px',
+      }}
     >
       {/* Ambient glows that blend with the global space bg */}
       <div
@@ -235,7 +238,11 @@ export default function PortfolioSection() {
               {/* Bio */}
               <div
                 className="px-8 py-8 flex flex-col items-center text-center"
-                style={{ marginTop: '15px', borderBottom: '1px solid rgba(255,255,255,0.05)' }}
+                style={{
+                  marginTop: '15px',
+                  marginBottom: '15px',
+                  borderBottom: '1px solid rgba(255,255,255,0.05)',
+                }}
               >
                 <p className="text-[15px] sm:text-base text-gray-300 leading-relaxed max-w-[280px]">
                   {p.bio.prefix}{' '}
@@ -249,7 +256,11 @@ export default function PortfolioSection() {
               {/* Contact links */}
               <div
                 className="px-6 sm:px-8 py-8"
-                style={{ marginTop: '15px', borderBottom: '1px solid rgba(255,255,255,0.05)' }}
+                style={{
+                  marginTop: '15px',
+                  marginBottom: '15px',
+                  borderBottom: '1px solid rgba(255,255,255,0.05)',
+                }}
               >
                 <div className="grid grid-cols-2 gap-3 w-full">
                   <ContactRow
@@ -373,7 +384,7 @@ export default function PortfolioSection() {
                 </div>
                 {/* Experiencia Carousel/Grid */}
                 <div className="mt-4 sm:mt-8 relative w-full min-w-0 max-w-full">
-                  <div 
+                  <div
                     className="flex w-full max-w-[85vw] mx-auto overflow-x-auto snap-x snap-mandatory gap-4 pb-4 sm:grid sm:grid-cols-3 sm:gap-6 sm:overflow-visible sm:pb-0 touch-pan-x [&::-webkit-scrollbar]:h-1.5 [&::-webkit-scrollbar-track]:bg-white/5 [&::-webkit-scrollbar-thumb]:bg-blue-500/50 [&::-webkit-scrollbar-thumb]:rounded-full"
                     style={{ WebkitOverflowScrolling: 'touch' }}
                   >

@@ -1,6 +1,4 @@
 import { Hero } from '@/components/home/hero';
-import EntrepreneursHero from '@/components/entrepreneurs/HeroSection';
-import ValueProposition from '@/components/entrepreneurs/ValueProposition';
 import ProductsGrid from '@/components/entrepreneurs/ProductsGrid';
 import CTASection from '@/components/entrepreneurs/CTASection';
 import PortfolioSection from '@/components/portfolio/PortfolioSection';
@@ -34,8 +32,6 @@ export default function Home() {
           id="entrepreneurs"
           className="relative z-20 bg-slate-950/30 backdrop-blur-sm border-t border-white/5"
         >
-          <EntrepreneursHero />
-          <ValueProposition />
           <ProductsGrid />
           <CTASection />
         </div>
