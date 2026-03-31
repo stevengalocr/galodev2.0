@@ -51,6 +51,7 @@ export function Header() {
             {/* <NavLink href="/projects">{t.nav.projects}</NavLink> */}
             <NavLink href="/#portfolio">{t.nav.portfolio}</NavLink>
             <NavLink href="/#entrepreneurs">{t.nav.entrepreneurs}</NavLink>
+            <NavLink href="/tools">{t.nav.tools}</NavLink>
           </div>
 
           {/* Hamburger Menu Button - Mobile Only */}
@@ -162,6 +163,10 @@ export function Header() {
 
           <MobileNavLink href="/#entrepreneurs" onClick={() => setMobileMenuOpen(false)}>
             {t.nav.entrepreneurs}
+          </MobileNavLink>
+
+          <MobileNavLink href="/tools" onClick={() => setMobileMenuOpen(false)}>
+            {t.nav.tools}
           </MobileNavLink>
 
           <MobileNavLink href="/contacto" onClick={() => setMobileMenuOpen(false)}>
