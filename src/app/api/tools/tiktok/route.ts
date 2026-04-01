@@ -1,14 +1,11 @@
 /**
  * TikTok Downloader API Route
  *
- * Uses the "Social Media Video Downloader" RapidAPI service.
- * Supports: TikTok videos with and without watermark.
+ * Uses tikwm.com — free, no auth required, reliable.
+ * Returns HD (no watermark) + SD (no watermark) + SD (with watermark).
  */
 
 import { NextRequest, NextResponse } from 'next/server';
-
-const RAPID_API_KEY = process.env.RAPIDAPI_KEY || '';
-const RAPID_API_HOST = 'social-media-video-downloader.p.rapidapi.com';
 
 export async function POST(request: NextRequest) {
   try {
@@ -18,7 +15,6 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ success: false, message: 'URL es requerida.' }, { status: 400 });
     }
 
-    // Validate TikTok URL
     try {
       const parsed = new URL(url);
       if (!parsed.hostname.includes('tiktok.com') && !parsed.hostname.includes('vm.tiktok.com')) {
@@ -31,21 +27,11 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ success: false, message: 'URL inválida.' }, { status: 400 });
     }
 
-    if (!RAPID_API_KEY) {
-      return NextResponse.json(
-        { success: false, message: 'Servicio no configurado. Falta la API Key.' },
-        { status: 503 }
-      );
-    }
-
     const apiResponse = await fetch(
-      `https://${RAPID_API_HOST}/smvd/get/all?url=${encodeURIComponent(url)}`,
+      `https://www.tikwm.com/api/?url=${encodeURIComponent(url)}&hd=1`,
       {
         method: 'GET',
-        headers: {
-          'x-rapidapi-key': RAPID_API_KEY,
-          'x-rapidapi-host': RAPID_API_HOST,
-        },
+        headers: { 'User-Agent': 'Mozilla/5.0 (compatible; GaloDev/1.0)' },
         cache: 'no-store',
       }
     );
@@ -56,8 +42,16 @@ export async function POST(request: NextRequest) {
 
     const data = await apiResponse.json();
 
-    // Social Media Video Downloader response shape:
-    // { success: true, links: [{ quality: "...", link: "...", type: "..." }], ... }
+    // tikwm response: { code: 0, msg: "success", data: { play, wmplay, hdplay, size, wm_size, hd_size } }
+    if (data?.code !== 0 || !data?.data) {
+      return NextResponse.json(
+        { success: false, message: data?.msg || 'No se pudo obtener el video. Verifica que sea público.' },
+        { status: 404 }
+      );
+    }
+
+    const { play, wmplay, hdplay, size, wm_size, hd_size } = data.data;
+
     const medias: {
       url: string;
       quality: string;
@@ -66,33 +60,39 @@ export async function POST(request: NextRequest) {
       withWatermark?: boolean;
     }[] = [];
 
-    if (data?.links && Array.isArray(data.links)) {
-      data.links.forEach(
-        (
-          item: { link?: string; quality?: string; type?: string; size?: string },
-          index: number
-        ) => {
-          if (item.link) {
-            // First result is usually without watermark for TikTok
-            const isFirstVideo = index === 0 && item.type?.includes('video');
-            medias.push({
-              url: item.link,
-              quality: item.quality || (index === 0 ? 'Sin marca de agua' : 'Con marca de agua'),
-              extension: item.type?.includes('video') ? 'mp4' : 'mp4',
-              size: item.size,
-              withWatermark: !isFirstVideo,
-            });
-          }
-        }
-      );
+    if (hdplay) {
+      medias.push({
+        url: hdplay,
+        quality: 'HD · Sin marca de agua',
+        extension: 'mp4',
+        size: hd_size ? `${(hd_size / 1024 / 1024).toFixed(1)} MB` : undefined,
+        withWatermark: false,
+      });
+    }
+
+    if (play) {
+      medias.push({
+        url: play,
+        quality: 'SD · Sin marca de agua',
+        extension: 'mp4',
+        size: size ? `${(size / 1024 / 1024).toFixed(1)} MB` : undefined,
+        withWatermark: false,
+      });
+    }
+
+    if (wmplay) {
+      medias.push({
+        url: wmplay,
+        quality: 'SD · Con marca de agua',
+        extension: 'mp4',
+        size: wm_size ? `${(wm_size / 1024 / 1024).toFixed(1)} MB` : undefined,
+        withWatermark: true,
+      });
     }
 
     if (medias.length === 0) {
       return NextResponse.json(
-        {
-          success: false,
-          message: 'No se encontraron videos descargables. Verifica que el video sea público.',
-        },
+        { success: false, message: 'No se encontraron videos descargables.' },
         { status: 404 }
       );
     }
@@ -103,8 +103,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json(
       {
         success: false,
-        message:
-          err instanceof Error ? err.message : 'Error interno al procesar la solicitud.',
+        message: err instanceof Error ? err.message : 'Error interno al procesar la solicitud.',
       },
       { status: 500 }
     );

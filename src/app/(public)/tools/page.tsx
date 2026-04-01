@@ -401,6 +401,13 @@ export default function ToolsPage() {
 
   return (
     <div style={{ minHeight: '100vh', position: 'relative', overflowX: 'hidden' }}>
+      {/* ── Fade to black at bottom (matches footer) ── */}
+      <div style={{
+        position: 'absolute', bottom: 0, left: 0, right: 0,
+        height: '220px', pointerEvents: 'none', zIndex: 5,
+        background: 'linear-gradient(to bottom, transparent 0%, #000000 100%)',
+      }} />
+
       {/* ── Rich ambient background ── */}
       <div style={{ position: 'fixed', inset: 0, pointerEvents: 'none', zIndex: 0 }}>
         {/* Top radial sweep */}

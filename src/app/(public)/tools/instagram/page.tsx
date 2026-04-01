@@ -61,7 +61,13 @@ export default function InstagramDownloaderPage() {
   };
 
   return (
-    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '100px 24px 60px', boxSizing: 'border-box' }}>
+    <div style={{ minHeight: '100vh', position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '100px 24px 60px', boxSizing: 'border-box' }}>
+      {/* Fade to black — matches footer */}
+      <div style={{
+        position: 'absolute', bottom: 0, left: 0, right: 0,
+        height: '180px', pointerEvents: 'none', zIndex: 0,
+        background: 'linear-gradient(to bottom, transparent 0%, #000000 100%)',
+      }} />
 
       {/* Back link */}
       <div style={{ width: '100%', maxWidth: '600px', marginBottom: '40px' }}>

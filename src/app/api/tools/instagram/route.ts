@@ -57,17 +57,21 @@ export async function POST(request: NextRequest) {
     const data = await apiResponse.json();
 
     // Social Media Video Downloader response shape:
-    // { success: true, links: [{ quality: "...", link: "...", type: "..." }], ... }
+    // { error: null, contents: [{ videos: [{ label: "...", url: "..." }] }] }
     const medias: { url: string; quality: string; extension: string; size?: string }[] = [];
 
-    if (data?.links && Array.isArray(data.links)) {
-      data.links.forEach((item: { link?: string; quality?: string; type?: string; size?: string }) => {
-        if (item.link) {
-          medias.push({
-            url: item.link,
-            quality: item.quality || 'Alta Calidad',
-            extension: item.type?.includes('video') ? 'mp4' : (item.type?.includes('image') ? 'jpg' : 'mp4'),
-            size: item.size,
+    if (data?.contents && Array.isArray(data.contents)) {
+      data.contents.forEach((content: { videos?: { label?: string; url?: string }[] }, contentIndex: number) => {
+        if (content?.videos && Array.isArray(content.videos)) {
+          content.videos.forEach((item: { label?: string; url?: string }) => {
+            if (item.url) {
+              const isImage = item.url.includes('.jpg') || item.url.includes('.jpeg') || item.url.includes('.png') || item.url.includes('.webp');
+              medias.push({
+                url: item.url,
+                quality: item.label || (data.contents.length > 1 ? `Imagen ${contentIndex + 1}` : 'Alta Calidad'),
+                extension: isImage ? 'jpg' : 'mp4',
+              });
+            }
           });
         }
       });
