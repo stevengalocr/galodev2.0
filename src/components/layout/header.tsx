@@ -48,9 +48,9 @@ export function Header() {
             <NavLink href="/" active>
               {t.nav.home}
             </NavLink>
-            {/* <NavLink href="/projects">{t.nav.projects}</NavLink> */}
-            <NavLink href="/#portfolio">{t.nav.portfolio}</NavLink>
+            <NavLink href="/sobre-mi">{t.nav.sobreMi}</NavLink>
             <NavLink href="/#entrepreneurs">{t.nav.entrepreneurs}</NavLink>
+            <NavLink href="/herramientas">{t.nav.herramientas}</NavLink>
           </div>
 
           {/* Hamburger Menu Button - Mobile Only */}
@@ -152,16 +152,16 @@ export function Header() {
             {t.nav.home}
           </MobileNavLink>
 
-          {/* <MobileNavLink href="/projects" onClick={() => setMobileMenuOpen(false)}>
-            {t.nav.projects}
-          </MobileNavLink> */}
-
-          <MobileNavLink href="/#portfolio" onClick={() => setMobileMenuOpen(false)}>
-            {t.nav.portfolio}
+          <MobileNavLink href="/sobre-mi" onClick={() => setMobileMenuOpen(false)}>
+            {t.nav.sobreMi}
           </MobileNavLink>
 
           <MobileNavLink href="/#entrepreneurs" onClick={() => setMobileMenuOpen(false)}>
             {t.nav.entrepreneurs}
+          </MobileNavLink>
+
+          <MobileNavLink href="/herramientas" onClick={() => setMobileMenuOpen(false)}>
+            {t.nav.herramientas}
           </MobileNavLink>
 
           <MobileNavLink href="/contacto" onClick={() => setMobileMenuOpen(false)}>
