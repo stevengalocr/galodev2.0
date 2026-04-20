@@ -4,8 +4,8 @@ import { useState } from 'react';
 import { createClient } from '@/lib/supabase/client';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
-import { Lock, Mail, Eye, EyeOff, AlertCircle, ArrowLeft, Wrench } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Lock, Mail, Eye, EyeOff, AlertCircle, ArrowLeft } from 'lucide-react';
 
 export default function HerramientasLoginPage() {
   const [email, setEmail] = useState('');
@@ -34,113 +34,128 @@ export default function HerramientasLoginPage() {
   };
 
   return (
-    <div
-      className="min-h-screen flex items-center justify-center relative overflow-hidden px-4"
-      style={{ fontFamily: 'var(--font-outfit, sans-serif)' }}
-    >
-      {/* Space background */}
+    <div className="min-h-screen w-full flex flex-col items-center justify-center relative overflow-hidden px-5">
+      {/* Background */}
       <div className="fixed inset-0 z-0">
         <div className="bg-space" />
       </div>
 
-      {/* Ambient glows */}
-      <div
-        aria-hidden
-        className="pointer-events-none fixed inset-0 z-0"
-        style={{
-          background: [
-            'radial-gradient(ellipse 70% 50% at 50% -10%, rgba(59,111,217,0.12) 0%, transparent 60%)',
-            'radial-gradient(ellipse 40% 35% at 85% 85%, rgba(124,59,217,0.08) 0%, transparent 60%)',
-            'radial-gradient(ellipse 30% 25% at 15% 70%, rgba(80,137,255,0.06) 0%, transparent 55%)',
-          ].join(','),
-        }}
-      />
+      {/* Glow blobs */}
+      <div aria-hidden className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
+        <div
+          className="absolute rounded-full"
+          style={{
+            width: 600,
+            height: 600,
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-70%, -60%)',
+            background: 'radial-gradient(circle, rgba(59,111,217,0.09) 0%, transparent 70%)',
+          }}
+        />
+        <div
+          className="absolute rounded-full"
+          style={{
+            width: 400,
+            height: 400,
+            bottom: '10%',
+            right: '5%',
+            background: 'radial-gradient(circle, rgba(124,59,217,0.07) 0%, transparent 70%)',
+          }}
+        />
+      </div>
 
-      <div className="relative z-10 w-full max-w-[420px]">
-        {/* Back link */}
+      {/* Back link */}
+      <div className="relative z-10 w-full max-w-[420px] mb-5">
         <Link
           href="/"
-          className="inline-flex items-center gap-2 text-sm text-white/35 hover:text-white/60 transition-colors mb-8 group"
+          className="inline-flex items-center gap-2 text-[13px] text-white/30 hover:text-white/60 transition-colors duration-200 group"
         >
-          <ArrowLeft
-            size={14}
-            className="group-hover:-translate-x-0.5 transition-transform duration-200"
-          />
-          <span>Volver al inicio</span>
+          <ArrowLeft size={13} className="group-hover:-translate-x-0.5 transition-transform duration-200" />
+          Volver al inicio
         </Link>
+      </div>
 
-        {/* Card */}
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, ease: 'easeOut' }}
-          className="relative rounded-3xl overflow-hidden"
+      {/* Card */}
+      <motion.div
+        initial={{ opacity: 0, y: 20, scale: 0.98 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+        className="relative z-10 w-full max-w-[420px]"
+      >
+        <div
+          className="relative w-full rounded-2xl overflow-hidden"
           style={{
-            background: 'rgba(8, 11, 24, 0.9)',
-            border: '1px solid rgba(255,255,255,0.09)',
-            boxShadow:
-              '0 40px 100px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.03), inset 0 1px 0 rgba(255,255,255,0.06)',
+            background: 'rgba(6, 8, 22, 0.96)',
+            border: '1px solid rgba(255,255,255,0.1)',
+            boxShadow: '0 32px 80px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,255,255,0.07)',
           }}
         >
-          {/* Top gradient accent */}
+          {/* Top shimmer line */}
           <div
-            className="absolute top-0 left-0 right-0 h-px"
+            className="absolute top-0 inset-x-0 h-px"
             style={{
               background:
-                'linear-gradient(90deg, transparent, rgba(80,137,255,0.5) 40%, rgba(124,59,217,0.4) 60%, transparent)',
+                'linear-gradient(90deg, transparent 0%, rgba(80,137,255,0.6) 35%, rgba(167,139,250,0.5) 65%, transparent 100%)',
             }}
           />
 
-          <div className="p-8 sm:p-10">
-            {/* Header */}
-            <div className="flex flex-col items-center text-center mb-8">
+          <div className="px-8 py-10 sm:px-10">
+            {/* Brand + icon */}
+            <div className="flex flex-col items-center text-center mb-9">
+              {/* Icon */}
               <div
-                className="w-14 h-14 rounded-2xl flex items-center justify-center mb-5"
+                className="w-[52px] h-[52px] rounded-2xl flex items-center justify-center mb-5"
                 style={{
-                  background:
-                    'linear-gradient(135deg, rgba(59,111,217,0.2) 0%, rgba(124,59,217,0.1) 100%)',
-                  border: '1px solid rgba(80,137,255,0.3)',
-                  boxShadow: '0 8px 24px rgba(59,111,217,0.15)',
+                  background: 'linear-gradient(135deg, rgba(59,111,217,0.25) 0%, rgba(124,59,217,0.15) 100%)',
+                  border: '1px solid rgba(80,137,255,0.35)',
+                  boxShadow: '0 8px 24px rgba(59,111,217,0.2)',
                 }}
               >
-                <Wrench size={22} style={{ color: 'var(--color-primary-300, #7baeff)' }} />
+                {/* GaloDev G monogram */}
+                <span className="text-lg font-black text-white/90" style={{ fontFamily: 'var(--font-outfit, sans-serif)', letterSpacing: '-0.05em' }}>G</span>
               </div>
-              <h1 className="text-2xl font-bold text-white tracking-tight mb-1">
-                Área Privada
+
+              <h1 className="text-[22px] font-bold text-white tracking-tight leading-tight">
+                GaloDev
               </h1>
-              <p className="text-sm text-white/35 font-light">GaloDev · Herramientas internas</p>
+              <p className="text-[13px] text-white/35 mt-1 font-light">
+                Área privada · Herramientas
+              </p>
             </div>
 
+            {/* Divider */}
+            <div className="w-full h-px mb-8" style={{ background: 'rgba(255,255,255,0.06)' }} />
+
             {/* Form */}
-            <form onSubmit={handleLogin} className="flex flex-col gap-5">
-              {/* Email */}
+            <form onSubmit={handleLogin} className="flex flex-col gap-4">
               <InputField
                 id="email"
                 type="email"
                 label="Correo electrónico"
                 placeholder="tu@email.com"
                 value={email}
-                onChange={(v) => setEmail(v)}
-                icon={<Mail size={15} />}
+                onChange={setEmail}
+                icon={Mail}
                 autoComplete="email"
               />
 
-              {/* Password */}
               <InputField
                 id="password"
                 type={showPassword ? 'text' : 'password'}
                 label="Contraseña"
                 placeholder="••••••••"
                 value={password}
-                onChange={(v) => setPassword(v)}
-                icon={<Lock size={15} />}
+                onChange={setPassword}
+                icon={Lock}
                 autoComplete="current-password"
-                rightElement={
+                rightAction={
                   <button
                     type="button"
-                    onClick={() => setShowPassword(!showPassword)}
-                    className="text-white/25 hover:text-white/55 transition-colors duration-150"
+                    onClick={() => setShowPassword((p) => !p)}
+                    className="text-white/25 hover:text-white/55 transition-colors"
                     tabIndex={-1}
+                    aria-label={showPassword ? 'Ocultar contraseña' : 'Mostrar contraseña'}
                   >
                     {showPassword ? <EyeOff size={15} /> : <Eye size={15} />}
                   </button>
@@ -148,67 +163,71 @@ export default function HerramientasLoginPage() {
               />
 
               {/* Error */}
-              {error && (
-                <motion.div
-                  initial={{ opacity: 0, y: -6 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="flex items-start gap-3 rounded-xl px-4 py-3.5 text-sm"
-                  style={{
-                    background: 'rgba(239,68,68,0.07)',
-                    border: '1px solid rgba(239,68,68,0.18)',
-                    color: '#fca5a5',
-                  }}
-                >
-                  <AlertCircle size={15} className="flex-shrink-0 mt-0.5" />
-                  <span className="leading-snug">{error}</span>
-                </motion.div>
-              )}
+              <AnimatePresence>
+                {error && (
+                  <motion.div
+                    key="error"
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: 'auto' }}
+                    exit={{ opacity: 0, height: 0 }}
+                    transition={{ duration: 0.2 }}
+                    className="overflow-hidden"
+                  >
+                    <div
+                      className="flex items-start gap-3 rounded-xl px-4 py-3.5 text-[13px]"
+                      style={{
+                        background: 'rgba(239,68,68,0.08)',
+                        border: '1px solid rgba(239,68,68,0.2)',
+                        color: '#fca5a5',
+                      }}
+                    >
+                      <AlertCircle size={14} className="flex-shrink-0 mt-px" />
+                      <span>{error}</span>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
 
-              {/* Submit */}
+              {/* Submit button */}
               <button
                 type="submit"
-                disabled={loading || !email || !password}
-                className="relative w-full py-3.5 rounded-xl text-sm font-bold text-white transition-all duration-200 mt-1 overflow-hidden group disabled:opacity-45 disabled:cursor-not-allowed"
+                disabled={loading || !email.trim() || !password.trim()}
+                className="relative w-full h-[50px] rounded-xl text-[14px] font-semibold text-white overflow-hidden transition-all duration-200 mt-1 disabled:opacity-40 disabled:cursor-not-allowed"
                 style={{
-                  background:
-                    'linear-gradient(135deg, rgba(59,111,217,0.95) 0%, rgba(80,137,255,0.85) 100%)',
-                  border: '1px solid rgba(80,137,255,0.35)',
-                  boxShadow: loading ? 'none' : '0 8px 28px rgba(59,111,217,0.28)',
+                  background: 'linear-gradient(135deg, #3b6fd9 0%, #5089ff 100%)',
+                  boxShadow: (!loading && email && password) ? '0 8px 32px rgba(59,111,217,0.35)' : 'none',
                 }}
               >
-                {/* Shimmer on hover */}
-                <span className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
-                  style={{
-                    background: 'linear-gradient(135deg, rgba(255,255,255,0.08) 0%, transparent 60%)',
-                  }}
-                />
-                <span className="relative flex items-center justify-center gap-2">
+                {/* Hover overlay */}
+                <span className="absolute inset-0 bg-white opacity-0 hover:opacity-[0.07] transition-opacity duration-200" />
+
+                <span className="relative flex items-center justify-center gap-2.5">
                   {loading ? (
                     <>
-                      <svg className="animate-spin w-4 h-4" viewBox="0 0 24 24" fill="none">
-                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="3"/>
-                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"/>
+                      <svg className="animate-spin w-4 h-4 opacity-80" fill="none" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="3" />
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z" />
                       </svg>
-                      Verificando...
+                      <span>Verificando…</span>
                     </>
                   ) : (
-                    'Ingresar al panel'
+                    <span>Ingresar al panel</span>
                   )}
                 </span>
               </button>
             </form>
           </div>
-        </motion.div>
+        </div>
+      </motion.div>
 
-        <p className="text-center text-xs text-white/15 mt-6">
-          Acceso exclusivo · GaloDev Utils
-        </p>
-      </div>
+      <p className="relative z-10 text-[11px] text-white/15 mt-6 text-center">
+        Acceso exclusivo · GaloDev Utils 2025
+      </p>
     </div>
   );
 }
 
-/* ── Input Field Component ──────────────────────────────────────── */
+/* ── Controlled Input ──────────────────────────────────────────── */
 
 function InputField({
   id,
@@ -217,9 +236,9 @@ function InputField({
   placeholder,
   value,
   onChange,
-  icon,
+  icon: Icon,
   autoComplete,
-  rightElement,
+  rightAction,
 }: {
   id: string;
   type: string;
@@ -227,44 +246,35 @@ function InputField({
   placeholder: string;
   value: string;
   onChange: (v: string) => void;
-  icon: React.ReactNode;
+  icon: React.ElementType;
   autoComplete?: string;
-  rightElement?: React.ReactNode;
+  rightAction?: React.ReactNode;
 }) {
   const [focused, setFocused] = useState(false);
-  const hasValue = value.length > 0;
 
   return (
-    <div className="flex flex-col gap-1.5">
+    <div className="flex flex-col gap-2">
       <label
         htmlFor={id}
-        className="text-xs font-semibold tracking-[0.12em] uppercase transition-colors duration-150"
-        style={{ color: focused ? 'rgba(120,167,255,0.8)' : 'rgba(255,255,255,0.35)' }}
+        className="text-[11px] font-semibold tracking-[0.14em] uppercase select-none transition-colors duration-150"
+        style={{ color: focused ? 'rgba(130,175,255,0.85)' : 'rgba(255,255,255,0.32)' }}
       >
         {label}
       </label>
 
       <div
-        className="relative flex items-center rounded-xl transition-all duration-200"
+        className="relative flex items-center h-[50px] rounded-xl transition-all duration-200"
         style={{
-          background: focused
-            ? 'rgba(59,111,217,0.07)'
-            : hasValue
-            ? 'rgba(255,255,255,0.04)'
-            : 'rgba(255,255,255,0.025)',
-          border: focused
-            ? '1px solid rgba(80,137,255,0.45)'
-            : '1px solid rgba(255,255,255,0.08)',
-          boxShadow: focused ? '0 0 0 3px rgba(59,111,217,0.1)' : 'none',
+          background: focused ? 'rgba(59,111,217,0.08)' : 'rgba(255,255,255,0.04)',
+          border: focused ? '1px solid rgba(80,137,255,0.5)' : '1px solid rgba(255,255,255,0.08)',
+          boxShadow: focused ? '0 0 0 3px rgba(59,111,217,0.12)' : 'none',
         }}
       >
-        {/* Left icon */}
-        <span
-          className="absolute left-4 top-1/2 -translate-y-1/2 transition-colors duration-150 pointer-events-none"
-          style={{ color: focused ? 'rgba(120,167,255,0.7)' : 'rgba(255,255,255,0.22)' }}
-        >
-          {icon}
-        </span>
+        <Icon
+          size={15}
+          className="absolute left-4 pointer-events-none transition-colors duration-150 flex-shrink-0"
+          style={{ color: focused ? 'rgba(130,175,255,0.65)' : 'rgba(255,255,255,0.2)' }}
+        />
 
         <input
           id={id}
@@ -276,12 +286,15 @@ function InputField({
           autoComplete={autoComplete}
           onFocus={() => setFocused(true)}
           onBlur={() => setFocused(false)}
-          className="w-full pl-11 pr-11 py-3.5 bg-transparent text-sm text-white outline-none placeholder-white/20"
+          className="w-full h-full pl-11 bg-transparent text-[14px] text-white outline-none"
+          style={{
+            paddingRight: rightAction ? '44px' : '16px',
+            caretColor: '#5089ff',
+          }}
         />
 
-        {/* Right element */}
-        {rightElement && (
-          <span className="absolute right-4 top-1/2 -translate-y-1/2">{rightElement}</span>
+        {rightAction && (
+          <span className="absolute right-4 flex items-center">{rightAction}</span>
         )}
       </div>
     </div>
