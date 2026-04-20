@@ -132,10 +132,9 @@ export default function PortfolioSection() {
   return (
     <section
       id="portfolio"
-      className="relative py-24 sm:py-32 overflow-hidden"
+      className="relative overflow-hidden"
       style={{
-        marginTop: '55px',
-        padding: '45px',
+        padding: '45px 45px 60px',
       }}
     >
       {/* Ambient glows that blend with the global space bg */}

@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install *)",
+      "Bash(npx tsc *)",
+      "Bash(npm run *)",
+      "Bash(curl -s -X POST https://awzzjmmckxxhuqxgbzvh.supabase.co/auth/v1/admin/users -H 'apikey: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImF3enpqbW1ja3h4aHVxeGdienZoIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3NjY5NzUxNCwiZXhwIjoyMDkyMjczNTE0fQ.SS3r9XXzh0ZWYxUObCWsZ-7wHyjTLoeRrgiQc1azI7w' -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImF3enpqbW1ja3h4aHVxeGdienZoIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3NjY5NzUxNCwiZXhwIjoyMDkyMjczNTE0fQ.SS3r9XXzh0ZWYxUObCWsZ-7wHyjTLoeRrgiQc1azI7w' -H 'Content-Type: application/json' -d '{\"email\":\"stevengalocr@gmail.com\",\"password\":\"123\",\"email_confirm\":true}')"
+    ]
+  }
+}
