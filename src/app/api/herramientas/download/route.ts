@@ -61,7 +61,7 @@ async function fetchInstagramRapid(url: string) {
   if (!apiKey) throw new Error('no_rapidapi_key');
 
   const endpoint =
-    'https://instagram-looter2.p.rapidapi.com/media-link?' +
+    'https://instagram-looter2.p.rapidapi.com/post?' +
     new URLSearchParams({ link: url }).toString();
 
   const res = await fetch(endpoint, {
@@ -76,20 +76,28 @@ async function fetchInstagramRapid(url: string) {
   if (!res.ok) throw new Error(`rapidapi_http_${res.status}`);
 
   const json = await res.json();
+  if (json.status === false || json.message) {
+      throw new Error('no_media_found');
+  }
 
-  // instagram-looter2 returns: { data: { media: [{url, type}], thumbnail, caption, owner } }
-  const media: Array<{ url: string; type: string }> =
-    json?.data?.media ?? json?.media ?? [];
+  let primaryUrl = json.video_url;
+  
+  if (!primaryUrl && json.edge_sidecar_to_children?.edges?.length > 0) {
+    const firstChild = json.edge_sidecar_to_children.edges[0].node;
+    primaryUrl = firstChild.video_url || firstChild.display_url;
+  }
+  
+  if (!primaryUrl) {
+    primaryUrl = json.display_url;
+  }
 
-  if (!media.length) throw new Error('no_media_found');
+  if (!primaryUrl) throw new Error('no_media_found');
 
-  const videos = media.filter((m) => m.type === 'video');
-  const primary = videos[0] ?? media[0];
-
-  const caption: string = json?.data?.caption ?? json?.caption ?? 'Instagram Reel';
-  const thumbnail: string | null = json?.data?.thumbnail ?? json?.thumbnail ?? null;
-  const ownerName: string | null =
-    json?.data?.owner?.username ?? json?.owner?.username ?? null;
+  const captionText = json.edge_media_to_caption?.edges?.[0]?.node?.text;
+  const caption: string = captionText || 'Instagram Reel';
+  
+  const thumbnail: string | null = json.thumbnail_src || json.display_url || null;
+  const ownerName: string | null = json.owner?.username || null;
 
   return {
     platform: 'instagram' as const,
@@ -100,7 +108,7 @@ async function fetchInstagramRapid(url: string) {
     authorHandle: ownerName,
     authorAvatar: null,
     downloads: [
-      { label: 'Descargar Reel', url: primary.url, type: 'video' as const },
+      { label: 'Descargar Reel', url: primaryUrl, type: 'video' as const },
     ],
   };
 }

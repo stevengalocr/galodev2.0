@@ -22,6 +22,7 @@ import {
 import { SiTiktok, SiInstagram } from 'react-icons/si';
 import { createClient } from '@/lib/supabase/client';
 import { useRouter } from 'next/navigation';
+import { MdPadding } from 'react-icons/md';
 
 /* ── Types ─────────────────────────────────────────────────────── */
 
@@ -47,11 +48,11 @@ function fmtDuration(s: number) {
 /* ── Main ───────────────────────────────────────────────────────── */
 
 export default function DescargarPage() {
-  const [url, setUrl]                     = useState('');
-  const [loading, setLoading]             = useState(false);
-  const [error, setError]                 = useState('');
-  const [result, setResult]               = useState<VideoResult | null>(null);
-  const [downloading, setDownloading]     = useState<string | null>(null);
+  const [url, setUrl] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+  const [result, setResult] = useState<VideoResult | null>(null);
+  const [downloading, setDownloading] = useState<string | null>(null);
   const [justDownloaded, setJustDownloaded] = useState<string | null>(null);
   const router = useRouter();
 
@@ -65,7 +66,7 @@ export default function DescargarPage() {
     setResult(null);
 
     try {
-      const res  = await fetch('/api/herramientas/download', {
+      const res = await fetch('/api/herramientas/download', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ url: trimmed }),
@@ -89,9 +90,9 @@ export default function DescargarPage() {
     try {
       const resp = await fetch(opt.url);
       const blob = await resp.blob();
-      const ext  = opt.type === 'audio' ? 'mp3' : 'mp4';
-      const a    = document.createElement('a');
-      a.href     = URL.createObjectURL(blob);
+      const ext = opt.type === 'audio' ? 'mp3' : 'mp4';
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
       a.download = `galodev_${result?.platform}_${Date.now()}.${ext}`;
       a.click();
       URL.revokeObjectURL(a.href);
@@ -117,7 +118,7 @@ export default function DescargarPage() {
     setError('');
   };
 
-  const isTikTok    = url.includes('tiktok.com') || url.includes('vm.tiktok.com');
+  const isTikTok = url.includes('tiktok.com') || url.includes('vm.tiktok.com');
   const isInstagram = url.includes('instagram.com') || url.includes('instagr.am');
 
   return (
@@ -125,7 +126,15 @@ export default function DescargarPage() {
 
       {/* ── Background ──────────────────────────────────────────── */}
       <div className="fixed inset-0 z-0">
-        <div className="bg-space" />
+        <Image
+          src="/galodev_tools_bg.png"
+          alt="Space Background"
+          fill
+          className="object-cover opacity-70 mix-blend-screen"
+          priority
+          unoptimized
+        />
+        <div className="absolute inset-0 bg-[#020412]/80 backdrop-blur-[2px]" />
       </div>
 
       {/* ── Ambient glows ───────────────────────────────────────── */}
@@ -152,6 +161,7 @@ export default function DescargarPage() {
       <header
         className="fixed top-0 inset-x-0 z-50 flex items-center justify-between px-5 sm:px-8"
         style={{
+          padding: '24px',
           height: '64px',
           background: 'rgba(2, 4, 18, 0.94)',
           backdropFilter: 'blur(24px)',
@@ -162,15 +172,6 @@ export default function DescargarPage() {
       >
         {/* Left: breadcrumb */}
         <Link href="/" className="flex items-center gap-2 group">
-          <div
-            className="w-[26px] h-[26px] rounded-lg flex items-center justify-center flex-shrink-0"
-            style={{
-              background: 'rgba(59,111,217,0.18)',
-              border: '1px solid rgba(80,137,255,0.3)',
-            }}
-          >
-            <span className="text-[11px] font-black text-white/90" style={{ letterSpacing: '-0.05em' }}>G</span>
-          </div>
           <span className="text-[14px] font-semibold text-white/80 group-hover:text-white transition-colors">
             GaloDev
           </span>
@@ -195,7 +196,7 @@ export default function DescargarPage() {
       </header>
 
       {/* ── Main ────────────────────────────────────────────────── */}
-      <main className="relative z-10 flex flex-col items-center pt-[108px] pb-24 px-5">
+      <main style={{ paddingTop: '125px', margin: '16px' }} className="relative z-10 flex flex-col items-center pt-[108px] pb-24 px-5">
 
         {/* ── Hero ───────────────────────────────────────────────── */}
         <motion.div
@@ -205,10 +206,11 @@ export default function DescargarPage() {
           className="w-full max-w-[580px] text-center mb-10"
         >
           {/* Pill badge */}
-          <div className="inline-flex items-center gap-2 mb-5">
+          <div style={{ marginBottom: '8px' }} className="inline-flex items-center gap-2 mb-5">
             <div
               className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full"
               style={{
+                padding: '4px',
                 background: 'rgba(59,111,217,0.1)',
                 border: '1px solid rgba(80,137,255,0.22)',
               }}
@@ -233,10 +235,11 @@ export default function DescargarPage() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
-          className="w-full max-w-[580px] mb-4"
+          className="w-full max-w-[680px] mb-4"
+          style={{ padding: '24px' }}
         >
           <div
-            className="relative rounded-2xl overflow-hidden"
+            className="relative rounded-[2rem] overflow-hidden"
             style={{
               background: 'rgba(5, 7, 20, 0.96)',
               border: '1px solid rgba(255,255,255,0.09)',
@@ -244,25 +247,17 @@ export default function DescargarPage() {
             }}
           >
             {/* Top shimmer */}
-            <div className="absolute top-0 inset-x-0 h-px" style={{
-              background: 'linear-gradient(90deg, transparent 0%, rgba(59,111,217,0.6) 30%, rgba(167,139,250,0.45) 65%, transparent 100%)',
-            }} />
+            <div className="absolute top-0 inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-blue-500/50 to-transparent" />
 
-            <div className="p-5 sm:p-7">
-              {/* Platform indicators */}
-              <div className="flex items-center gap-2 mb-5">
-                <PlatformPill icon={SiTiktok}    label="TikTok"          active={isTikTok}    color="#5089ff" />
-                <PlatformPill icon={SiInstagram} label="Instagram Reels" active={isInstagram} color="#a78bfa" />
-              </div>
-
+            <div className="p-8 sm:p-12">
               {/* Input + button */}
-              <form onSubmit={handleAnalyze} className="flex flex-col sm:flex-row gap-3">
-                <div className="flex-1 relative">
+              <form onSubmit={handleAnalyze} className="flex flex-col sm:flex-row gap-4" style={{ padding: '16px' }}>
+                <div className="flex-1 relative group">
                   {/* Left icon */}
                   <Link2
-                    size={14}
-                    className="absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none transition-colors duration-200"
-                    style={{ color: url ? 'rgba(130,175,255,0.55)' : 'rgba(255,255,255,0.2)' }}
+                    size={20}
+                    className="absolute left-5 top-1/2 -translate-y-1/2 pointer-events-none transition-colors duration-200"
+                    style={{ color: url ? 'rgba(130,175,255,0.55)' : 'rgba(255,255,255,0.3)' }}
                   />
 
                   <input
@@ -270,21 +265,21 @@ export default function DescargarPage() {
                     value={url}
                     onChange={(e) => { setUrl(e.target.value); if (result) setResult(null); if (error) setError(''); }}
                     placeholder="Pega el enlace aquí…"
-                    className="w-full h-[50px] rounded-xl text-[14px] text-white outline-none transition-all duration-200 placeholder:text-white/22"
+                    className="w-full h-[60px] rounded-2xl text-[16px] text-white outline-none transition-all duration-200 placeholder:text-white/30"
                     style={{
                       background: url ? 'rgba(59,111,217,0.07)' : 'rgba(255,255,255,0.04)',
-                      border: url ? '1px solid rgba(80,137,255,0.35)' : '1px solid rgba(255,255,255,0.08)',
-                      paddingLeft: '42px',
-                      paddingRight: url ? '44px' : '16px',
+                      border: url ? '1px solid rgba(80,137,255,0.35)' : '1px solid rgba(255,255,255,0.1)',
+                      paddingLeft: '56px',
+                      paddingRight: url ? '56px' : '20px',
                       caretColor: '#5089ff',
                     }}
                     onFocus={e => {
                       e.currentTarget.style.border = '1px solid rgba(80,137,255,0.55)';
                       e.currentTarget.style.background = 'rgba(59,111,217,0.09)';
-                      e.currentTarget.style.boxShadow = '0 0 0 3px rgba(59,111,217,0.12)';
+                      e.currentTarget.style.boxShadow = '0 0 20px rgba(59,111,217,0.15)';
                     }}
                     onBlur={e => {
-                      e.currentTarget.style.border = url ? '1px solid rgba(80,137,255,0.35)' : '1px solid rgba(255,255,255,0.08)';
+                      e.currentTarget.style.border = url ? '1px solid rgba(80,137,255,0.35)' : '1px solid rgba(255,255,255,0.1)';
                       e.currentTarget.style.background = url ? 'rgba(59,111,217,0.07)' : 'rgba(255,255,255,0.04)';
                       e.currentTarget.style.boxShadow = 'none';
                     }}
@@ -293,9 +288,9 @@ export default function DescargarPage() {
                     <button
                       type="button"
                       onClick={handleClear}
-                      className="absolute right-3.5 top-1/2 -translate-y-1/2 text-white/22 hover:text-white/55 transition-colors"
+                      className="absolute right-5 top-1/2 -translate-y-1/2 text-white/30 hover:text-white/70 transition-colors"
                     >
-                      <Trash2 size={13} />
+                      <Trash2 size={20} />
                     </button>
                   )}
                 </div>
@@ -303,20 +298,21 @@ export default function DescargarPage() {
                 <button
                   type="submit"
                   disabled={loading || !url.trim()}
-                  className="h-[50px] px-7 rounded-xl text-[14px] font-semibold text-white flex items-center justify-center gap-2 flex-shrink-0 transition-all duration-200 disabled:opacity-35 disabled:cursor-not-allowed relative overflow-hidden"
+                  className="h-[60px] px-8 rounded-2xl text-[16px] font-bold text-white flex items-center justify-center gap-2 flex-shrink-0 transition-all duration-300 disabled:opacity-40 disabled:cursor-not-allowed relative overflow-hidden"
                   style={{
                     background: (!loading && url.trim())
                       ? 'linear-gradient(135deg, #2d5ec7 0%, #4a7fff 60%, #5a8fff 100%)'
-                      : 'rgba(40,55,100,0.5)',
-                    boxShadow: (!loading && url.trim()) ? '0 6px 28px rgba(59,111,217,0.35)' : 'none',
-                    minWidth: '130px',
+                      : 'rgba(255,255,255,0.05)',
+                    boxShadow: (!loading && url.trim()) ? '0 8px 30px rgba(59,111,217,0.4)' : 'none',
+                    minWidth: '150px',
+                    border: (!loading && url.trim()) ? 'none' : '1px solid rgba(255,255,255,0.05)'
                   }}
                 >
                   <span className="absolute inset-0 bg-white opacity-0 hover:opacity-[0.07] transition-opacity" />
                   {loading ? (
-                    <Loader2 size={14} className="animate-spin flex-shrink-0" />
+                    <Loader2 size={20} className="animate-spin flex-shrink-0" />
                   ) : (
-                    <Download size={14} className="flex-shrink-0" />
+                    <Download size={20} className="flex-shrink-0" />
                   )}
                   <span className="relative">{loading ? 'Analizando…' : 'Analizar'}</span>
                 </button>
@@ -336,6 +332,7 @@ export default function DescargarPage() {
                     <div
                       className="flex items-start gap-3 rounded-xl px-4 py-3.5 text-[13px]"
                       style={{
+                        padding: '8px',
                         background: 'rgba(239,68,68,0.08)',
                         border: '1px solid rgba(239,68,68,0.22)',
                         color: '#fca5a5',
@@ -365,6 +362,7 @@ export default function DescargarPage() {
                 background: 'rgba(5, 7, 20, 0.96)',
                 border: '1px solid rgba(255,255,255,0.09)',
                 boxShadow: '0 24px 64px rgba(0,0,0,0.55)',
+                padding: '24px'
               }}
             >
               {/* Thumbnail */}
@@ -430,7 +428,7 @@ export default function DescargarPage() {
 
                 {/* Title */}
                 {result.title && result.title !== 'Instagram Reel' && (
-                  <p className="text-[13px] text-white/50 leading-relaxed mb-5 line-clamp-2">
+                  <p style={{ padding: '12px' }} className="text-[13px] text-white/50 leading-relaxed mb-5 line-clamp-2">
                     {result.title}
                   </p>
                 )}
@@ -453,16 +451,17 @@ export default function DescargarPage() {
                         disabled={!!downloading}
                         className="flex items-center justify-between w-full px-4 py-3.5 rounded-xl text-[13px] font-medium transition-all duration-200 disabled:opacity-50 group"
                         style={{
+                          padding: '6px',
                           background: isDone
                             ? 'rgba(52,211,153,0.1)'
                             : isMain
-                            ? 'rgba(59,111,217,0.13)'
-                            : 'rgba(255,255,255,0.03)',
+                              ? 'rgba(59,111,217,0.13)'
+                              : 'rgba(255,255,255,0.03)',
                           border: isDone
                             ? '1px solid rgba(52,211,153,0.3)'
                             : isMain
-                            ? '1px solid rgba(80,137,255,0.28)'
-                            : '1px solid rgba(255,255,255,0.07)',
+                              ? '1px solid rgba(80,137,255,0.28)'
+                              : '1px solid rgba(255,255,255,0.07)',
                           color: isDone ? '#34d399' : 'white',
                           boxShadow: isMain && !isDone ? '0 2px 12px rgba(59,111,217,0.1)' : 'none',
                         }}
@@ -511,7 +510,7 @@ export default function DescargarPage() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center justify-center gap-1.5 w-full py-2.5 rounded-xl text-[12px] text-white/22 hover:text-white/42 transition-colors mt-1"
-                    style={{ border: '1px solid rgba(255,255,255,0.05)' }}
+                    style={{ padding: '8px', borderTop: '1px solid rgba(255,255,255,0.05)' }}
                   >
                     <ExternalLink size={11} />
                     Ver en la plataforma original
@@ -535,9 +534,10 @@ export default function DescargarPage() {
               style={{
                 background: 'rgba(5, 7, 20, 0.7)',
                 border: '1px solid rgba(255,255,255,0.07)',
+                padding: '24px'
               }}
             >
-              <div className="px-5 sm:px-7 pt-6 pb-2">
+              <div style={{ marginBottom: '6px' }} className="px-5 sm:px-7 pt-6 pb-2">
                 <p className="text-[10px] font-bold tracking-[0.2em] uppercase text-white/22">
                   Plataformas soportadas
                 </p>
@@ -564,7 +564,7 @@ export default function DescargarPage() {
 
               <div
                 className="px-5 sm:px-7 py-3.5 flex items-center justify-center"
-                style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}
+                style={{ marginTop: '16px', paddingTop: '8px', borderTop: '1px solid rgba(255,255,255,0.05)' }}
               >
                 <p className="text-[11px] text-white/18 text-center tracking-wide">
                   Solo videos públicos · Uso personal
@@ -587,15 +587,15 @@ function PlatformPill({
 }) {
   return (
     <span
-      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11.5px] font-medium transition-all duration-250"
+      className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full text-[13px] font-bold transition-all duration-250"
       style={{
         background: active ? `${color}1A` : 'rgba(255,255,255,0.04)',
         border: active ? `1px solid ${color}40` : '1px solid rgba(255,255,255,0.07)',
-        color: active ? color : 'rgba(255,255,255,0.28)',
-        boxShadow: active ? `0 0 16px ${color}20` : 'none',
+        color: active ? color : 'rgba(255,255,255,0.4)',
+        boxShadow: active ? `0 0 20px ${color}20` : 'none',
       }}
     >
-      <Icon size={11} />
+      <Icon size={16} />
       {label}
     </span>
   );
@@ -610,7 +610,10 @@ function SupportCard({
   return (
     <div
       className="rounded-xl p-4 flex flex-col gap-3"
-      style={{ background: glowColor, border: `1px solid ${border}` }}
+      style={{
+        background: glowColor, border: `1px solid ${border}`,
+        padding: '12px',
+      }}
     >
       <div className="flex items-center gap-2.5">
         <div
