@@ -1,0 +1,316 @@
+@import 'tailwindcss';
+
+:root {
+  /* Primary - Deep Space Blues */
+  --color-primary-50: #e8f0ff;
+  --color-primary-100: #c5d9ff;
+  --color-primary-200: #9ebfff;
+  --color-primary-300: #74a4ff;
+  --color-primary-400: #5089ff;
+  --color-primary-500: #3b6fd9;
+  --color-primary-600: #2d58b3;
+  --color-primary-700: #1f428c;
+  --color-primary-800: #142d66;
+  --color-primary-900: #0a1940;
+
+  /* Secondary - Nebula Purple */
+  --color-secondary-50: #f3e8ff;
+  --color-secondary-100: #e0c5ff;
+  --color-secondary-200: #c99eff;
+  --color-secondary-300: #b174ff;
+  --color-secondary-400: #9a50ff;
+  --color-secondary-500: #7c3bd9;
+  --color-secondary-600: #612db3;
+  --color-secondary-700: #471f8c;
+  --color-secondary-800: #2e1466;
+  --color-secondary-900: #180a40;
+
+  /* Accent - Starlight */
+  --color-accent-50: #f0f8ff;
+  --color-accent-100: #e0f0ff;
+  --color-accent-200: #bae0ff;
+  --color-accent-300: #8aceff;
+  --color-accent-400: #5abaff;
+  --color-accent-500: #38a3e6;
+  --color-accent-600: #2b82b8;
+  --color-accent-700: #1f628a;
+  --color-accent-800: #14425c;
+  --color-accent-900: #0a212e;
+
+  /* Space Neutrals */
+  --color-space-50: #f5f5f7;
+  --color-space-100: #e5e5e9;
+  --color-space-200: #c8c8d0;
+  --color-space-300: #a8a8b4;
+  --color-space-400: #888898;
+  --color-space-500: #68687c;
+  --color-space-600: #505062;
+  --color-space-700: #383848;
+  --color-space-800: #1a1a2e;
+  --color-space-900: #0d0d1a;
+  --color-space-950: #06060d;
+
+  /* Semantic Colors */
+  --color-success: #22c55e;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+  --color-info: #3b82f6;
+
+  /* Glow Effects */
+  --glow-blue: rgba(59, 111, 217, 0.5);
+  --glow-purple: rgba(124, 59, 217, 0.5);
+  --glow-white: rgba(255, 255, 255, 0.3);
+
+  /* Background & Foreground */
+  --background: var(--color-space-900);
+  --background-secondary: var(--color-space-800);
+  --background-tertiary: var(--color-space-700);
+  --foreground: #ffffff;
+  --foreground-secondary: var(--color-space-200);
+  --foreground-muted: var(--color-space-400);
+
+  /* Border */
+  --border: var(--color-space-700);
+  --border-hover: var(--color-space-600);
+
+  /* Card */
+  --card: var(--color-space-800);
+  --card-foreground: #ffffff;
+
+  /* Input */
+  --input: var(--color-space-800);
+  --input-border: var(--color-space-600);
+  --input-focus: var(--color-primary-500);
+
+  /* Button */
+  --button-primary: var(--color-primary-500);
+  --button-primary-hover: var(--color-primary-600);
+  --button-secondary: var(--color-secondary-500);
+  --button-secondary-hover: var(--color-secondary-600);
+
+  --font-sans: 'Outfit', system-ui, -apple-system, sans-serif;
+  --font-mono: var(--font-geist-mono), monospace;
+
+  --radius-sm: 0.25rem;
+  --radius: 0.5rem;
+  --radius-md: 0.625rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+  --radius-full: 9999px;
+
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3), 0 1px 2px -1px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -2px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -4px rgba(0, 0, 0, 0.3);
+  --shadow-glow: 0 0 20px var(--glow-blue);
+  --shadow-glow-lg: 0 0 40px var(--glow-blue);
+
+  --z-dropdown: 1000;
+  --z-sticky: 1020;
+  --z-fixed: 1030;
+  --z-backdrop: 1040;
+  --z-modal: 1050;
+  --z-popover: 1060;
+  --z-tooltip: 1070;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Glassmorphism */
+.glass {
+  background: rgba(26, 26, 46, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-light {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Glow Effects */
+.glow-blue {
+  box-shadow: var(--shadow-glow);
+}
+
+.glow-purple {
+  box-shadow: 0 0 20px var(--glow-purple);
+}
+
+/* Text Gradient */
+.text-gradient {
+  background: linear-gradient(135deg, var(--color-primary-400), var(--color-secondary-400));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Space Background - Procedural High-Res Midnight Blue Universe */
+.bg-space {
+  position: absolute;
+  inset: 0;
+  height: 100vh;
+  width: 100vw;
+  z-index: 0;
+  background-color: #020617; /* Slate 950 - Deepest Midnight */
+  overflow: hidden;
+  /* Deep Midnight Gradient Base */
+  background-image: 
+    radial-gradient(circle at 50% 120%, #1e3a8a 10%, rgba(2, 6, 23, 0) 60%), /* Deep Royal Blue Glow from bottom */
+    linear-gradient(to bottom, #020617 0%, #0f172a 100%); /* Slate 950 to Slate 900 */
+}
+
+/* Procedural Stars & Nebulae using CSS Gradients */
+.bg-space::before,
+.bg-space::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  mix-blend-mode: screen;
+}
+
+/* Layer 1: Dense Starfield & Icy Dust */
+.bg-space::before {
+  background-image: 
+    /* White/Ice Stars - Main Cluster */
+    radial-gradient(1px 1px at 10px 10px, #e2e8f0, rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 50px 80px, #e2e8f0, rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 90px 40px, #e2e8f0, rgba(0,0,0,0)),
+    radial-gradient(1.5px 1.5px at 130px 150px, #cbd5e1, rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 180px 220px, #e2e8f0, rgba(0,0,0,0)),
+    
+    /* Extra Dense Star Fill */
+    radial-gradient(1px 1px at 20px 180px, #e2e8f0, rgba(0,0,0,0)),
+    radial-gradient(0.5px 0.5px at 60px 250px, #e2e8f0, rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 110px 290px, #e2e8f0, rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 200px 80px, #e2e8f0, rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 350px 120px, #e2e8f0, rgba(0,0,0,0)),
+    radial-gradient(1.5px 1.5px at 280px 220px, #e2e8f0, rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 150px 350px, #e2e8f0, rgba(0,0,0,0)),
+
+    /* Blue Tinted Stars */
+    radial-gradient(1.5px 1.5px at 250px 50px, #38bdf8, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 300px 300px, #7dd3fc, rgba(0,0,0,0));
+  background-repeat: repeat;
+  background-size: 400px 400px;
+  opacity: 0.8;
+  animation: shine 5s ease-in-out infinite alternate;
+}
+
+/* Layer 2: Midnight Nebulae & Major Stars */
+.bg-space::after {
+  background-image: 
+    /* Large "Hero" Stars */
+    radial-gradient(2px 2px at 20px 20px, #fff, rgba(0,0,0,0)),
+    radial-gradient(3px 3px at 150px 150px, #e0f2fe, rgba(0,0,0,0)),
+    /* Midnight Blue Nebulae Clouds */
+    radial-gradient(circle at 20% 40%, rgba(30, 58, 138, 0.2), transparent 45%), /* Dark Blue */
+    radial-gradient(circle at 80% 60%, rgba(8, 145, 178, 0.15), transparent 35%),  /* Cyan */
+    radial-gradient(circle at 10% 80%, rgba(59, 130, 246, 0.1), transparent 45%); /* Blue-500 */
+  background-repeat: repeat;
+  background-size: 600px 600px;
+  animation: float-slow 15s linear infinite alternate;
+}
+
+/* Premium Twinkle Animation */
+@keyframes shine {
+  0% { opacity: 0.4; }
+  50% { opacity: 0.8; }
+  100% { opacity: 0.4; }
+}
+
+@keyframes float-slow {
+  0% { transform: translateY(0) scale(1.0); }
+  100% { transform: translateY(-5px) scale(1.02); }
+}
+
+/* Edge Fade Overlays - Creates seamless continuation effect */
+.fade-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 15vh;
+  background: linear-gradient(to bottom, var(--color-space-950), transparent);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.fade-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 20vh;
+  background: linear-gradient(to top, var(--color-space-950), transparent);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.fade-left {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 8vw;
+  background: linear-gradient(to right, var(--color-space-950), transparent);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.fade-right {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 8vw;
+  background: linear-gradient(to left, var(--color-space-950), transparent);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Floating Animation */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}

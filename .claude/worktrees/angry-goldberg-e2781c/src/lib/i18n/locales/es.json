@@ -9,7 +9,7 @@
     "portfolio": "Portafolio",
     "sobreMi": "Sobre Mí",
     "herramientas": "Herramientas",
-    "entrepreneurs": "Freelancer",
+    "entrepreneurs": "Para emprendedores",
     "contact": "Contáctanos",
     "tools": "Herramientas"
   },
@@ -47,14 +47,14 @@
   },
   "entrepreneurs": {
     "hero": {
-      "badge": "Freelancer disponible para nuevos proyectos",
-      "titlePart1": "Proyectos en los que",
-      "titleHighlight": "participé",
-      "description": "Full-Stack Developer con experiencia en landing pages, e-commerce, APIs REST, sistemas web y aplicaciones modernas. Acepto proyectos de cualquier tamaño y complejidad."
+      "badge": "Soluciones para Emprendedores",
+      "titlePart1": "Software que ayuda",
+      "titleHighlight": "negocios reales",
+      "description": "Creamos soluciones digitales modernas para emprendedores que quieren vender más y operar mejor."
     },
     "valueProp": {
-      "title": "No vendemos servicios genéricos.",
-      "subtitle": "Ejecutamos proyectos reales y específicos."
+      "title": "No vendemos páginas web.",
+      "subtitle": "Creamos software que genera resultados."
     }
   },
   "contact": {
@@ -95,13 +95,13 @@
     }
   },
   "products": {
-    "sectionTitle": "Proyectos en los que participé",
-    "swipeHint": "Desliza para ver experiencia en cada tipo de proyecto.",
+    "sectionTitle": "Creamos software que genera resultados.",
+    "swipeHint": "Desliza para explorar nuestros sistemas.",
     "landing": {
       "title": "Landing Pages",
-      "desc": "He desarrollado páginas optimizadas para convertir visitas en clientes. Diseño orientado a conversión, captura de leads e integración con WhatsApp.",
+      "desc": "Páginas optimizadas para convertir visitas en clientes reales.",
       "audience": "Servicios y Marcas Personales",
-      "short": "Landing Pages",
+      "short": "Páginas Web",
       "features": {
         "0": "Diseño orientado a conversión",
         "1": "Captura de leads",
@@ -110,8 +110,8 @@
       }
     },
     "ecommerce": {
-      "title": "E-commerce y Tiendas Online",
-      "desc": "He construido tiendas online rápidas, escalables y personalizadas. Checkout optimizado, gestión simple y integraciones de pago.",
+      "title": "E-commerce a Medida",
+      "desc": "Tiendas online rápidas, escalables y personalizadas para tu marca.",
       "audience": "Marcas y Tiendas",
       "short": "E-commerce",
       "features": {
@@ -123,8 +123,8 @@
     },
     "chatbot": {
       "title": "Chatbot de Ventas con IA",
-      "desc": "He automatizado respuestas y procesos de ventas con IA. Chatbots que califican leads, responden inteligentemente y se integran con múltiples canales.",
-      "audience": "Automatización 24/7",
+      "desc": "Automatiza respuestas, vende 24/7 y no pierdas más clientes.",
+      "audience": "Atención 24/7",
       "short": "Chatbots",
       "features": {
         "0": "Atención automática",
@@ -134,10 +134,10 @@
       }
     },
     "crm": {
-      "title": "Sistemas CRM y Gestión",
-      "desc": "He desarrollado sistemas completos para controlar leads, clientes y ventas desde un solo lugar. Dashboards claros y flujos optimizados.",
+      "title": "Sistemas Completos",
+      "desc": "Controla leads, clientes y ventas desde un solo lugar.",
       "audience": "Equipos de ventas",
-      "short": "Sistemas CRM",
+      "short": "Sistemas",
       "features": {
         "0": "Gestión de oportunidades",
         "1": "Estados de venta",
@@ -146,10 +146,10 @@
       }
     },
     "allinone": {
-      "title": "Soluciones Completas",
-      "desc": "He entregado soluciones integrales que combinan landing, e-commerce, CRM, automatización y chatbots en un solo sistema.",
+      "title": "Todo-en-Uno",
+      "desc": "La solución completa para negocios que quieren escalar.",
       "audience": "Negocios en expansión",
-      "short": "Soluciones Integrales",
+      "short": "Todo en Uno",
       "features": {
         "0": "Landing + ventas",
         "1": "Automatización",
