@@ -15,6 +15,8 @@ export default function SobreMiPage() {
         {/* Spacer that accounts for fixed header at top-[5%] + header height */}
         <div className="h-36 sm:h-44" />
         <PortfolioSection />
+        {/* Gradient fade to black to seamlessly transition into the black footer */}
+        <div className="h-40 w-full bg-gradient-to-b from-transparent to-black" />
       </div>
     </div>
   );

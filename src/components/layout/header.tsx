@@ -26,8 +26,9 @@ export function Header() {
         <nav
           className="flex items-center justify-between w-full max-w-6xl transition-all duration-300"
           style={{
+            margin: '0 25px 0 25px',
             borderRadius: '1.5rem',
-            padding: '0.5rem 1rem',
+            padding: '0.4rem',
             background: 'rgba(10, 10, 20, 0.2)',
             backdropFilter: 'blur(16px)',
             WebkitBackdropFilter: 'blur(16px)',
@@ -37,6 +38,9 @@ export function Header() {
         >
           {/* Logo */}
           <Link
+            style={{
+              marginLeft: '1rem',
+            }}
             href="/"
             className="text-white font-bold text-lg sm:text-xl tracking-tight hover:opacity-80 transition-opacity whitespace-nowrap z-50"
           >
@@ -61,19 +65,16 @@ export function Header() {
           >
             <div className="w-6 h-5 flex flex-col justify-between">
               <span
-                className={`block h-0.5 w-full bg-white transition-all duration-300 ${
-                  mobileMenuOpen ? 'rotate-45 translate-y-2' : ''
-                }`}
+                className={`block h-0.5 w-full bg-white transition-all duration-300 ${mobileMenuOpen ? 'rotate-45 translate-y-2' : ''
+                  }`}
               />
               <span
-                className={`block h-0.5 w-full bg-white transition-all duration-300 ${
-                  mobileMenuOpen ? 'opacity-0' : ''
-                }`}
+                className={`block h-0.5 w-full bg-white transition-all duration-300 ${mobileMenuOpen ? 'opacity-0' : ''
+                  }`}
               />
               <span
-                className={`block h-0.5 w-full bg-white transition-all duration-300 ${
-                  mobileMenuOpen ? '-rotate-45 -translate-y-2' : ''
-                }`}
+                className={`block h-0.5 w-full bg-white transition-all duration-300 ${mobileMenuOpen ? '-rotate-45 -translate-y-2' : ''
+                  }`}
               />
             </div>
           </button>
@@ -118,9 +119,8 @@ export function Header() {
 
       {/* Fullscreen Mobile Menu Overlay */}
       <div
-        className={`fixed inset-0 z-[60] md:hidden transition-all duration-500 ${
-          mobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
-        }`}
+        className={`fixed inset-0 z-[60] md:hidden transition-all duration-500 ${mobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+          }`}
         style={{
           background: 'rgba(10, 10, 20, 0.3)',
           backdropFilter: 'blur(20px)',
@@ -216,10 +216,9 @@ function NavLink({
       href={href}
       className={`
         text-sm lg:text-base transition-all duration-300 whitespace-nowrap
-        ${
-          active
-            ? 'bg-primary-500/20 text-white font-medium shadow-sm'
-            : 'text-white/60 font-light hover:text-white hover:bg-white/5'
+        ${active
+          ? 'bg-primary-500/20 text-white font-medium shadow-sm'
+          : 'text-white/60 font-light hover:text-white hover:bg-white/5'
         }
       `}
       style={{

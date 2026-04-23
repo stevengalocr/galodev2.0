@@ -20,7 +20,7 @@ export async function sendEmail({ subject, htmlBody }: SendEmailOptions) {
     // Configuración del correo, forzando tu dirección como destino único
     const mailOptions = {
       from: process.env.SMTP_USER,
-      to: process.env.CONTACT_EMAIL || 'stevengalocr@gmail.com', // Destino forzado para pruebas
+      to: process.env.CONTACT_EMAIL || 'galodevcr@gmail.com', // Destino forzado
       subject: `[GaloDev Contacto] ${subject}`,
       html: htmlBody,
     };

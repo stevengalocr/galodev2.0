@@ -194,7 +194,7 @@ export default function CTASection() {
             </div>
 
             {/* Micro Form */}
-            <div className="w-full max-w-lg mx-auto" style={{ padding: '12px' }}>
+            <div className="w-full max-w-lg mx-auto" style={{ padding: '32px' }}>
               {status === 'success' ? (
                 <div
                   className="bg-white/5 border border-white/10 backdrop-blur-sm shadow-2xl relative rounded-3xl p-8 flex flex-col items-center justify-center text-center animation-fade-in"
