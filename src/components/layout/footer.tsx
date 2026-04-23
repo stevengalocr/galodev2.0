@@ -48,7 +48,7 @@ export function Footer() {
           hoverColor="hover:text-cyan-400"
         />
         <SocialButton
-          href="mailto:stevengalocr@gmail.com"
+          href="mailto:galodevcr@gmail.com"
           icon={<FaEnvelope />}
           label="Email"
           hoverColor="hover:text-red-400"

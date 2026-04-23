@@ -264,8 +264,8 @@ export default function PortfolioSection() {
                 <div className="grid grid-cols-2 gap-3 w-full">
                   <ContactRow
                     icon={Mail}
-                    href="mailto:stevengalocr@gmail.com"
-                    label="stevengalocr@gmail.com"
+                    href="mailto:galodevcr@gmail.com"
+                    label="galodevcr@gmail.com"
                   />
                   <ContactRow
                     icon={Phone}

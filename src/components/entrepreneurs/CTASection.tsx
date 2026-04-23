@@ -176,7 +176,7 @@ export default function CTASection() {
                 <FaWhatsapp />
               </a>
               <a
-                href="mailto:stevengalocr@gmail.com"
+                href="mailto:galodevcr@gmail.com"
                 className="flex items-center justify-center w-16 h-16 rounded-full bg-white/5 border border-white/10 hover:bg-blue-500/20 hover:border-blue-500/50 hover:text-blue-400 text-gray-300 transition-all duration-300 text-2xl"
                 aria-label="Email"
               >
