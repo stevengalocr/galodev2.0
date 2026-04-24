@@ -60,7 +60,7 @@
   "contact": {
     "pageTitle": "Contáctanos",
     "ctaTitle": "¿Tenés un negocio y querés una solución digital real?",
-    "ctaDescription": "Hablemos y construyamos la mejor herramienta para vos.",
+    "ctaDescription": "Mandame un mail y te ayudamos con tu proyecto.",
     "form": {
       "namePlaceholder": "Tu nombre",
       "fullNamePlaceholder": "Tu Nombre Completo *",
@@ -95,7 +95,7 @@
     }
   },
   "products": {
-    "sectionTitle": "Proyectos en los que participé",
+    "sectionTitle": "Proyectos destacados",
     "swipeHint": "Desliza para ver experiencia en cada tipo de proyecto.",
     "landing": {
       "title": "Landing Pages",
