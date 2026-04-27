@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import {
   Download, PenSquare, LogOut, ArrowRight,
-  Sparkles, CheckCircle2,
+  Sparkles, CheckCircle2, CheckSquare,
 } from 'lucide-react';
 import { SiTiktok, SiInstagram } from 'react-icons/si';
 import { createClient } from '@/lib/supabase/client';
@@ -52,6 +52,26 @@ const TOOLS = [
       { icon: SiInstagram, label: 'Carruseles de Instagram' },
       { icon: PenSquare, label: 'Copy con Claude IA' },
       { icon: Sparkles, label: 'Imágenes con Google Imagen' },
+    ],
+  },
+  {
+    href: '/herramientas/tareas',
+    icon: CheckSquare,
+    label: 'Tareas & Hábitos',
+    tagline: 'Tu día organizado · Pendientes · Racha semanal',
+    description:
+      'Gestioná tus tareas diarias por lugar y momento, seguí tus hábitos con un tracker visual y mantenés tu racha de productividad.',
+    acento: '#10B981',
+    acentoGlow: 'rgba(16,185,129,0.12)',
+    acentoGlowStrong: 'rgba(16,185,129,0.26)',
+    acentoBorder: 'rgba(16,185,129,0.28)',
+    acentoBorderHover: 'rgba(16,185,129,0.55)',
+    acentoText: '#6ee7b7',
+    shimmer: 'from-transparent via-emerald-500/50 to-transparent',
+    features: [
+      { icon: CheckSquare, label: 'Tareas diarias' },
+      { icon: Sparkles, label: 'Tracker de hábitos' },
+      { icon: CheckCircle2, label: 'Racha semanal' },
     ],
   },
 ] as const;
@@ -147,7 +167,7 @@ export default function HerramientasHub() {
         >
           <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
           <span className="text-[10.5px] font-semibold tracking-[0.14em] uppercase text-emerald-400/70">
-            2 herramientas activas
+            3 herramientas activas
           </span>
         </div>
 
