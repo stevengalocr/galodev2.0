@@ -41,5 +41,8 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# Satori font cache (auto-downloaded at runtime, not committed)
+/.satori-fonts/
+
 # Claude AI local settings (contains API keys)
 .claude/settings.local.json

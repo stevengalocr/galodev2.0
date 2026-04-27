@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { ArrowRight, Download, QrCode, Link2, Palette } from 'lucide-react';
+import { ArrowRight, Download, QrCode, Link2, Palette, PenSquare } from 'lucide-react';
 import { SiTiktok, SiInstagram } from 'react-icons/si';
 
 const tools = [
@@ -20,6 +20,19 @@ const tools = [
       { icon: SiTiktok, label: 'TikTok' },
       { icon: SiInstagram, label: 'Reels' },
     ],
+  },
+  {
+    href: '/herramientas/crear-post',
+    icon: PenSquare,
+    title: 'Crear Post',
+    description:
+      'De la idea al carrusel de Instagram listo para publicar — con Claude AI + diseño GaloDev.',
+    badge: 'Disponible',
+    badgeActive: true,
+    color: 'rgba(139,92,246,0.12)',
+    borderColor: 'rgba(167,139,250,0.28)',
+    iconColor: '#a78bfa',
+    tags: [],
   },
   {
     href: null,

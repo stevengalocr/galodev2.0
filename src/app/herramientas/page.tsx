@@ -1,5 +1,6 @@
 import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
+import HerramientasHub from './HerramientasHub';
 
 export default async function HerramientasPage() {
   const supabase = await createClient();
@@ -8,5 +9,6 @@ export default async function HerramientasPage() {
   } = await supabase.auth.getUser();
 
   if (!user) redirect('/herramientas/login');
-  redirect('/herramientas/descargar');
+
+  return <HerramientasHub />;
 }
